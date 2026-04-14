@@ -2,7 +2,7 @@
 **Pravidla:** 
 
   **Herní plocha:**
-    - tvořena 8 sedmisegmentovými displeji vedle sebe (tvoří pole o rozměrech 3x16)
+    - tvořena 8 sedmisegmentovými displeji vedle sebe (tvoří pole o rozměrech 3x16)\n
     - každý displej představuje jednu pozici hada
     
   **Snake:**
