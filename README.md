@@ -29,6 +29,7 @@
   - tlačítko pro spuštění nebo restart hry po prohře
 
 
+
 **Členové týmu:**
 - Ondřej Gracias (269670)
 - Matěj Jurka (269810)
