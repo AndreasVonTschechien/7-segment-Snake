@@ -1,29 +1,32 @@
 # 7-segment-Snake
-**Pravidla:** 
 
-  **Herní plocha:**
-    - tvořena 8 sedmisegmentovými displeji vedle sebe (tvoří pole o rozměrech 3x16)\n
-    - každý displej představuje jednu pozici hada
-    
-  **Snake:**
-    - had se skládá z několika svítících segmentů 
-    - může se pohybovat ve 4 směrech: ↑ ↓ → ←
-    - had se automaticky posouvá v daném směru v pravidelném intervalu 
-    - hráč může měnit směr hada tlačítky
-    
-  **Potrava:**
-    - potrava se objevuje náhodně na jednom ze segmentů displeje
-    - po "sežrání“ potravy se had prodlouží, zvýší se skóre a zvýší rychlost pohybu
+## Pravidla
 
-  **Kolize:**
-    - hra končí, pokud: had narazí do sebe **NEBO** vyčerpal všechny dostupná pole
-    - z důvodu menšího herního prostoru bude hadovi umožněn průchod hranicemi arény ve všech směrech
+- **Herní plocha:**
+  - tvořena 8 sedmisegmentovými displeji vedle sebe (tvoří pole o rozměrech 3x16)
+  - každý displej představuje jednu pozici hada
 
-  **Skóre:**
-    - skóre se zobrazuje pomocí svitu diod **→** jeden bod = jedna svítící dioda
+- **Snake:**
+  - had se skládá z několika svítících segmentů
+  - může se pohybovat ve 4 směrech: ↑ ↓ → ←
+  - had se automaticky posouvá v daném směru v pravidelném intervalu
+  - hráč může měnit směr hada tlačítky
 
-  **Start / Restart:**
-    - bude realizováno tlačítko pro spuštění nebo restart hry po prohře 
+- **Potrava:**
+  - potrava se objevuje náhodně na jednom ze segmentů displeje
+  - po „sežrání“ potravy se had prodlouží, zvýší se skóre a zvýší rychlost pohybu
+
+- **Kolize:**
+  - hra končí, pokud:
+    - had narazí do sebe
+    - nebo vyčerpal všechna dostupná pole
+  - z důvodu omezeného herního prostoru je umožněn průchod hranicemi arény ve všech směrech
+
+- **Skóre:**
+  - skóre se zobrazuje pomocí svitu diod → jeden bod = jedna svítící dioda
+
+- **Start / Restart:**
+  - tlačítko pro spuštění nebo restart hry po prohře
 
 
 **Členové týmu:**
