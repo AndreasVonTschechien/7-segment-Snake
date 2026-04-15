@@ -11,3 +11,11 @@
    - tento program je kostra celé aplikace, na kterém budeme v dalších hodinách stavět
    - obsahuje logiku ovládání hada, posuny mezi segmentovými displeji, průchod hranicemi arény (nutnost kvůli nesymetrii arény), atd..
    - tento program byl vytvořen ve spolupráci s AI
+
+
+
+
+
+
+link na schema
+https://miro.com/app/board/uXjVGltN0F8=/?share_link_id=903489917899
