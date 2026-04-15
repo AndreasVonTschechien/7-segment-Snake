@@ -1,6 +1,7 @@
 **Pracovní náplň cvičení dne 15.4.2026:**
 
 1) Opravili jsme blokové schéma projektu 
+<img width="1512" height="661" alt="Block_diagram" src="https://github.com/user-attachments/assets/59ae3552-55cb-468b-b006-66d2e117b980" />
 
 2) UPDATE_1.1
    - tento program je základním kamenem projektu
@@ -17,5 +18,5 @@
 
 
 
-link na schema
-https://miro.com/app/board/uXjVGltN0F8=/?share_link_id=903489917899
+
+[ odkaz na schéma: https://miro.com/app/board/uXjVGltN0F8=/?share_link_id=903489917899]
