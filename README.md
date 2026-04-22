@@ -29,6 +29,7 @@
   - tlačítko pro spuštění nebo restart hry po prohře
 
 ## LAB1 - 8.4.2026
+-adasdasd
 
 
 **Členové týmu:**
