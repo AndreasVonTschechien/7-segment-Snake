@@ -31,6 +31,12 @@
 ## LAB1 - 8.4.2026
 -adasdasd
 
+## LAB2 - 15.4.2026
+-adasdasd
+
+## LAB3 - 22.4.2026
+-adasdasd
+
 
 **Členové týmu:**
 - Ondřej Gracias (269670)
