@@ -1,0 +1,470 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity clk_en is
+
+    generic ( G_MAX : positive := 5 );
+    
+    Port ( clk : in STD_LOGIC;
+           rst : in STD_LOGIC;
+           ce : out STD_LOGIC);
+end clk_en;
+
+architecture Behavioral of clk_en is
+
+    signal sig_cnt : integer range 0 to G_MAX-1;
+
+begin
+
+    process (clk) is
+    begin
+        if rising_edge(clk) then  
+            if rst = '1' then     
+                ce      <= '0';   
+                sig_cnt <= 0;     
+
+            elsif sig_cnt = G_MAX-1 then
+                ce <= '1';
+                sig_cnt <= 0;
+                
+            else
+                ce <= '0';
+                sig_cnt <= sig_cnt + 1;
+                
+            end if;  
+        end if;      
+    end process;
+
+end Behavioral;
+
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity debounce is
+    Port ( clk : in STD_LOGIC;
+           rst : in STD_LOGIC;
+           btn_in : in STD_LOGIC;
+           btn_state : out STD_LOGIC;
+           btn_press : out STD_LOGIC;
+           btn_release: out STD_LOGIC);
+end debounce;
+
+architecture Behavioral of debounce is
+    ----------------------------------------------------------------
+    -- Constants
+    ----------------------------------------------------------------
+    constant C_SHIFT_LEN : positive := 4;  -- Debounce history
+    constant C_MAX       : positive := 2;  -- Sampling period
+                                           -- 2 for simulation
+                                           -- 200_000 (2 ms) for implementation !!!
+
+    ----------------------------------------------------------------
+    -- Internal signals
+    ----------------------------------------------------------------
+    signal ce_sample : std_logic;
+    signal sync0     : std_logic;
+    signal sync1     : std_logic;
+    signal shift_reg : std_logic_vector(C_SHIFT_LEN-1 downto 0);
+    signal debounced : std_logic;
+    signal delayed   : std_logic;
+
+    ----------------------------------------------------------------
+    -- Component declaration for clock enable
+    ----------------------------------------------------------------
+    component clk_en is
+        generic ( G_MAX : positive );
+        port (
+            clk : in  std_logic;
+            rst : in  std_logic;
+            ce  : out std_logic
+        );
+    end component clk_en;
+
+begin
+    ----------------------------------------------------------------
+    -- Clock enable instance
+    ----------------------------------------------------------------
+    clock_0 : clk_en
+        generic map ( G_MAX => C_MAX )
+        port map (
+            clk => clk,
+            rst => rst,
+            ce  => ce_sample
+        );
+
+    ----------------------------------------------------------------
+    -- Synchronizer + debounce
+    ----------------------------------------------------------------
+    p_debounce : process(clk)
+    begin
+        if rising_edge(clk) then
+            if rst = '1' then
+                sync0     <= '0';
+                sync1     <= '0';
+                shift_reg <= (others => '0');
+                debounced <= '0';
+                delayed   <= '0';
+
+            else
+                -- Input synchronizer
+                sync1 <= sync0;
+                sync0 <= btn_in;
+
+                -- Sample only when enable pulse occurs
+                if ce_sample = '1' then
+
+                    -- Shift values to the left and load a new sample as LSB
+                    shift_reg <= shift_reg(C_SHIFT_LEN-2 downto 0) & sync1;
+
+                    -- Check if all bits are '1'
+                    if shift_reg = (shift_reg'range => '1') then
+                        debounced <= '1';
+                    -- Check if all bits are '0'
+                    elsif shift_reg = (shift_reg'range => '0') then
+                        debounced <= '0';
+                    end if;
+
+                end if;
+
+                -- One clock delayed output for edge detector
+                delayed <= debounced;
+            end if;
+        end if;
+    end process;
+
+    ----------------------------------------------------------------
+    -- Outputs
+    ----------------------------------------------------------------
+    btn_state <= debounced;
+
+    -- One-clock pulse when button pressed
+    btn_press <= debounced and not(delayed);
+    btn_release <= not debounced and delayed;
+end Behavioral;
+
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+
+entity main is
+    Port ( clk : in STD_LOGIC;
+           rst : in STD_LOGIC;
+           btn_up : in STD_LOGIC;
+           btn_down : in STD_LOGIC;
+           btn_right : in STD_LOGIC;
+           btn_left : in STD_LOGIC;
+           data : out STD_LOGIC_VECTOR(6 downto 0));
+end main;
+
+architecture Behavioral of main is
+
+    component clk_en is
+        generic ( G_MAX : positive );
+        port (
+            clk : in  std_logic;
+            rst : in  std_logic;
+            ce  : out std_logic
+        );
+    end component clk_en;
+    
+    component debounce is
+        port ( clk : in std_logic;
+            rst : in std_logic;
+            btn_in : in std_logic;
+            btn_state : out std_logic;
+            btn_press : out std_logic;
+            btn_release: out std_logic);
+    end component debounce;
+    
+    component counter is
+        generic ( G_BITS : positive := 3 );  --! Default number of bits
+        port (
+            clk : in  std_logic;                             --! Main clock
+            rst : in  std_logic;                             --! High-active synchronous reset
+            en  : in  std_logic;                             --! Clock enable input
+            cnt : out std_logic_vector(G_BITS - 1 downto 0));
+    end component counter;    
+    
+    constant C_MAX : positive := 2;
+    
+    signal sig_press_up : std_logic;
+    signal sig_press_down : std_logic;
+    signal sig_press_right : std_logic;
+    signal sig_press_left : std_logic;
+    
+    signal sig_direction_up : std_logic;
+    signal sig_direction_down : std_logic;
+    signal sig_direction_right : std_logic;
+    signal sig_direction_left : std_logic;
+    
+    signal sig_cnt : std_logic_vector(5 downto 0);
+    signal sig_ce_sample : std_logic;
+     
+    type state_reg is array (0 to 6) of integer range 0 to 7;
+    signal sig_state_reg : state_reg;
+    signal current_position : integer range 0 to 6 := 0;
+    signal next_position : integer range 0 to 6 := 0;
+    signal previous_position : integer range 0 to 6 := 0;        
+    signal length : integer range 1 to 7 := 1;
+          
+begin
+
+    debounce_0 : debounce
+        port map (
+            clk => clk,
+            rst => rst,
+            btn_in => btn_up,
+            btn_press => sig_press_up
+        );
+
+    debounce_1 : debounce
+        port map (
+            clk => clk,
+            rst => rst,
+            btn_in => btn_down,
+            btn_press => sig_press_down
+        );
+
+    debounce_2 : debounce
+        port map (
+            clk => clk,
+            rst => rst,
+            btn_in => btn_right,
+            btn_press => sig_press_right
+        );
+        
+    debounce_3 : debounce
+        port map (
+            clk => clk,
+            rst => rst,
+            btn_in => btn_left,
+            btn_press => sig_press_left
+        );
+
+    clock_0 : clk_en
+        generic map ( G_MAX => C_MAX )
+        port map (
+            clk => clk,
+            rst => rst,
+            ce  => sig_ce_sample
+        );
+                         
+    counter_0 : counter
+        generic map ( G_BITS => 6 )
+        port map (
+            clk => clk,
+            rst => rst,
+            cnt => sig_cnt,
+            en => sig_ce_sample
+        );
+        
+    direction : process (clk)
+    begin
+        if rising_edge(clk) then
+            if rst = '1' then
+                sig_direction_up    <= '0';
+                sig_direction_down  <= '0';
+                sig_direction_left  <= '0';
+                sig_direction_right <= '0'; 
+            elsif sig_press_up = '1' and sig_direction_down = '0' then
+                sig_direction_up <= '1';
+                sig_direction_down <= '0';
+                sig_direction_right <= '0';
+                sig_direction_left <= '0';
+            elsif sig_press_down = '1' and sig_direction_up = '0' then
+                sig_direction_up <= '0';
+                sig_direction_down <= '1';
+                sig_direction_right <= '0';
+                sig_direction_left <= '0';
+            elsif sig_press_right = '1' and sig_direction_left = '0' then
+                sig_direction_up <= '0';
+                sig_direction_down <= '0';
+                sig_direction_right <= '1';
+                sig_direction_left <= '0';
+            elsif sig_press_left = '1' and sig_direction_right = '0' then
+                sig_direction_up <= '0';
+                sig_direction_down <= '0';
+                sig_direction_right <= '0';
+                sig_direction_left <= '1';
+            end if;
+        end if;
+    end process direction;
+
+    movement : process(clk)
+    begin
+        if rising_edge(clk) then
+            if rst = '1' then
+                current_position <= 0;
+                -- sig_state_reg <= 
+                previous_position <= 5;
+                next_position <= 1;
+                length <= 1;
+            elsif sig_ce_sample = '1' then
+            
+                case current_position is
+                    when 0 =>
+                        if sig_direction_down = '1' then
+                            if previous_position = 5 then
+                                next_position <= 1;                                 
+                            elsif previous_position = 1 then
+                                next_position <= 5;
+                            else
+                                next_position <= current_position; 
+                            end if;
+                        end if;            
+                    when 1 =>
+                        if sig_direction_down = '1' then
+                            next_position <= 2;
+                        elsif sig_direction_left = '1' then 
+                            if previous_position = 0 then
+                                next_position <= 6;
+                            elsif previous_position = 2 or previous_position = 6 then
+                                next_position <= 0;
+                            else
+                                next_position <= current_position;
+                            end if;                                   
+                        end if;                        
+                    when 2 =>
+                        if sig_direction_left = '1' then
+                            if previous_position = 1 or previous_position = 6 then
+                                next_position <= 3;
+                            elsif previous_position = 3 then
+                                next_position <= 6;
+                            end if;
+                        elsif sig_direction_up = '1' then
+                            next_position <= 2;
+                        else
+                            next_position <= current_position;
+                        end if;
+                    when 3 =>
+                        if sig_direction_up = '1' then
+                            if previous_position = 4 then
+                                next_position <= 2;
+                            elsif previous_position = 2 then
+                                next_position <= 4;
+                            else
+                                next_position <= current_position;
+                            end if;
+                        end if;
+                    when 4 =>
+                        if sig_direction_up = '1' then
+                            next_position <= 5;
+                        elsif sig_direction_right = '1' then
+                            if previous_position = 3 then
+                                next_position <= 6;
+                            elsif previous_position = 5 or previous_position = 6 then
+                                next_position <= 3;
+                            else
+                                next_position <= current_position;
+                            end if;
+                        end if;
+                    when 5 =>
+                        if sig_direction_down = '1' then
+                            next_position <= 4;
+                        elsif sig_direction_right = '1' then
+                            if previous_position = 0 then
+                                next_position <= 6;
+                            elsif previous_position = 4 or previous_position = 6 then
+                                next_position <= 0;
+                            else
+                                next_position <= current_position;
+                            end if;
+                       end if;
+                    when 6 =>
+                        if sig_direction_up = '1' then
+                            if previous_position = 1 or previous_position = 2 then
+                                next_position <= 5;
+                            elsif previous_position = 4 or previous_position = 5 then
+                                next_position <= 1;
+                            end if;    
+                        elsif sig_direction_down = '1' then
+                            if previous_position = 1 or previous_position = 2 then
+                                next_position <= 4;
+                            elsif previous_position = 4 or previous_position = 5 then
+                                next_position <= 2;
+                            else
+                                next_position <= current_position;
+                            end if;
+                        end if; 
+                end case;            
+            
+                for i in 0 to 6 loop
+                    if i = next_position then
+                        sig_state_reg(i) <= length;
+                    elsif sig_state_reg(i) > 0 then
+                        sig_state_reg(i) <= sig_state_reg(i) - 1;
+                    end if;
+                end loop;
+                previous_position <= current_position;
+                current_position <= next_position;
+            end if;
+        end if;
+    end process movement;
+    
+    data_output : process(sig_state_reg)
+    begin
+        for i in 0 to 6 loop
+            if sig_state_reg(i) > 0 then
+                data(i) <= '1';
+            else 
+                data(i) <= '0';
+            end if;
+                
+        end loop;
+    end process data_output;
+end Behavioral;
+
+
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;  -- Package for data types conversion
+
+-------------------------------------------------
+ 
+entity counter is
+    generic ( G_BITS : positive := 3 );  --! Default number of bits
+    port (
+        clk : in  std_logic;                             --! Main clock
+        rst : in  std_logic;                             --! High-active synchronous reset
+        en  : in  std_logic;                             --! Clock enable input
+        cnt : out std_logic_vector(G_BITS - 1 downto 0)  --! Counter value
+    );
+end entity counter;
+
+-------------------------------------------------
+
+architecture Behavioral of counter is
+
+    -- Maximum counter value = 2^G_BITS - 1
+    constant C_MAX : integer := 55;
+
+    -- Integer counter with defined range
+    signal sig_cnt : integer range 0 to C_MAX;
+
+begin
+
+    --! Clocked process with synchronous reset which implements
+    --! N-bit up counter.
+
+    p_counter : process (clk) is
+    begin
+        if rising_edge(clk) then
+            if rst = '1' then    -- Synchronous, active-high reset
+                sig_cnt <= 0;
+
+            elsif en = '1' then  -- Clock enable activated
+                if sig_cnt = C_MAX then
+                    sig_cnt <= 0;
+                else
+                    sig_cnt <= sig_cnt + 1;
+                end if;          -- Each `if` must end by `end if`
+            end if;
+        end if;
+    end process p_counter;
+
+    -- Convert integer to std_logic_vector
+    cnt <= std_logic_vector(to_unsigned(sig_cnt, G_BITS));
+
+end Behavioral;
