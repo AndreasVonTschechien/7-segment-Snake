@@ -27,7 +27,7 @@
 
 - **Start / Restart:**
   - tlačítko pro spuštění nebo restart hry po prohře
-\n
+
 ## LAB1 - 8.4.2026
 -adasdasd
 
