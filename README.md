@@ -36,7 +36,7 @@
 
 ## LAB3 - 22.4.2026
 
-##Pro Jurkise TESTBENCH
+**Pro Jurkise TESTBENCH**
 
 Verifikace návrhu (Simulace)
 Na přiloženém screenshotu z Vivado simulátoru je demonstrována funkčnost hlavní řídicí logiky hry. Simulace potvrzuje správnou součinnost všech komponent: synchronního čítače (rychlost hry), debounceru (ošetření vstupů) a stavového automatu pohybu.
