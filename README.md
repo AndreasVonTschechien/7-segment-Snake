@@ -35,7 +35,7 @@
 -adasdasd
 
 ## LAB3 - 22.4.2026
--adasdasd
+
 ##Pro Jurkise TESTBENCH
 
 Verifikace návrhu (Simulace)
