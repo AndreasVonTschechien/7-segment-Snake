@@ -44,7 +44,7 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 
 # Základní informace k projektu
 ### Blokové schéma projektu
-<img width="1200" height="800" alt="image" src="https://github.com/user-attachments/assets/c483349a-f2f5-41d2-9a9b-aedd91b4502a" />
+<img width="1200" height="600" alt="image" src="https://github.com/user-attachments/assets/c483349a-f2f5-41d2-9a9b-aedd91b4502a" />
 
 ### 1. CLK_EN (Clock Enable)
 - Účel:   Dělič frekvence systémových hodin (Frequency Divider).
