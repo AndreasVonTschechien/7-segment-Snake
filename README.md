@@ -44,8 +44,30 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 
 # Základní informace k projektu
 ### Blokové schéma projektu
-<img width="1482" height="460" alt="image" src="<img src="https://github.com/user-attachments/assets/c483349a-f2f5-41d2-9a9b-aedd91b4502a" />
+<img width="1482" height="460" alt="image" src="https://github.com/user-attachments/assets/c483349a-f2f5-41d2-9a9b-aedd91b4502a" />
+1. CLK_EN (Clock Enable)
+Účel: Dělič frekvence systémových hodin.
 
+Funkce: Generuje puls CE, který zpomaluje herní smyčku na rychlost hratelnou pro člověka a slouží k synchronizaci celého návrhu.
+
+2. DEBOUNCER
+Účel: Ošetření vstupů z mechanických tlačítek.
+
+Funkce: Eliminuje nežádoucí zákmity při stisku (debouncing). Na výstupu poskytuje čisté, jednohodinové pulsy pro změnu směru pohybu hada.
+
+3. SNAKE LOGIC
+Účel: Hlavní stavový automat hry.
+
+Funkce: * Vypočítává aktuální pozici hlavy a těla hada.
+
+Vyhodnocuje kolize (stěny, vlastní tělo) a sběr jídla.
+
+Spravuje aktuální skóre (LED_SCORE) a generuje data pro obrazovku (SEG_VID_OUT).
+
+4. DISPLAY CONTROL
+Účel: Hardwarový ovladač (driver) výstupů.
+
+Funkce: Zajišťuje multiplexování 7-segmentových displejů. Převádí herní data na signály pro anody (AN) a katody (SEG) v reálném čase.
 
 
 
