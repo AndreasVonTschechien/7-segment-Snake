@@ -105,7 +105,7 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 # Simulace komponentů
 * **Generátor Clock Enable (`ce`)**
     * Systémové hodiny (clk) tikají na vysoké frekvenci, což je pro mechaniku hada příliš rychlé.
-    * Místo vytváření nových (nestabilních) hodinových domén běží vše na jedné frekvenci, ale modul ce generuje v pravidelných intervalech krátký „povolující“ pulz. Ten slouží jako brána, která          dovolí hadovi udělat krok jen jednou za určitý čas, čímž zajišťuje konstantní a hratelnou rychlost.
+    * Místo vytváření nových hodinových domén běží vše na jedné frekvenci, ale modul `ce` generuje v pravidelných intervalech krátký „povolující“ pulz, který dovolí hadovi udělat krok jen jednou za určitý čas, čímž zajišťuje konstantní a hratelnou rychlost.
 <img width="1200" height="250" alt="image" src="https://github.com/AndreasVonTschechien/7-segment-Snake/blob/main/clock_sim.png?raw=true" />
 
 <br>
