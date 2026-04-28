@@ -18,9 +18,6 @@ Digital Snake game implemented on 8 seven-segment displays.
 Cílem projektu je za pomoci 8 7-segmentových displejů vytvořit funkční a hratelnou verzi populární hry "Snake".
 Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn krátkým videem, plakátem formátu A3 a přehledným repozitářem na GitHubu.
 
-
-## Lab 1: Architecture
-Tady bude tvůj text k první laboratoři...
 ### Členové týmu
 - Ondřej Gracias (269670)
 - Matěj Jurka (269810)
@@ -28,7 +25,6 @@ Tady bude tvůj text k první laboratoři...
 - Dostál Matěj (272709)
 
 ## Pravidla hry
-
 * **Herní plocha a Snake:** Pole tvoří 8 sedmisegmentových displejů (dohromady tvoří pole o 3 řadách a 16 sloupcích), kde každý segment představuje jednu pozici. Had se skládá ze svítících segmentů, pohybuje se automaticky ve 4 směrech a hráč mění směr tlačítky.
 
 <br>
