@@ -93,13 +93,11 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 | :--- | :---: | :---: | :--- |
 | **`SEG(7:0)`** | Out | 8 bitů | Ovládání jednotlivých segmentů (A-G + DP) pro 7-segmentový displej. |
 | **`AN(7:0)`** | Out | 8 bitů | Společné anody pro výběr aktivní cifry (Multiplexing). |
-| **`LED(15:0)`**| Out | 16 bitů | Binární zobrazení skóre nebo stavu hry na řadě LED diod. |
 
-## 🛰️ Interní propojení (Internal Signals)
+### Interní propojení
 * **`SIG_CE`**: Pomalý synchronizační puls z `CLK_EN`, který řídí taktování logiky a displeje.
 * **`SIG_BTN_X_PRESS`**: Vyčištěné pulsy z `DEBOUNCERu` o délce jednoho taktu `CLK`.
 * **`SIG_VID_OUT(63:0)`**: 64-bitová sběrnice nesoucí data o stavu "pixelů" (segmentů) pro zobrazení.
-* **`SIG_LED_SCORE(15:0)`**: Aktuální stav skóre předávaný z herní logiky na výstupní piny.
 
 
 
