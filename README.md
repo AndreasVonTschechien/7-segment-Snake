@@ -1,5 +1,10 @@
-# 7-segment-Snake
+# SNA7E 🐍
 
+![Platform: AVR](https://img.shields.io/badge/platform-AVR-blue.svg)
+![Language: C](https://img.shields.io/badge/language-C-orange.svg)
+![Display: 7--Segment](https://img.shields.io/badge/display-7--segment-red.svg)
+
+Digital Snake game implemented on 8 seven-segment displays.
 
 ### Obsah
 * [Cíl projektu](#cíl-projektu)
