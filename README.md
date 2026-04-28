@@ -49,7 +49,8 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 
 ## CV1 - Úvodní hodina (8.4.2026)
 -adasdasd
-<img width="1482" height="460" alt="image" src="https://github.com/AndreasVonTschechien/7-segment-Snake/blob/main/image.png?raw=true" />
+<img width="1482" height="460" alt="image" src="<img width="1498" height="667" alt="image" src="https://github.com/user-attachments/assets/c483349a-f2f5-41d2-9a9b-aedd91b4502a" />
+" />
 
 ## LAB2 - 15.4.2026
 -adasdasd
