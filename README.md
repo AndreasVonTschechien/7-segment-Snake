@@ -46,20 +46,21 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 ### Blokové schéma projektu
 <img width="1482" height="460" alt="image" src="https://github.com/user-attachments/assets/c483349a-f2f5-41d2-9a9b-aedd91b4502a" />
 
-1. CLK_EN (Clock Enable)
-------------------------
+### 1. CLK_EN (Clock Enable)
 - Účel:   Dělič frekvence systémových hodin (Frequency Divider).
 - Funkce: Transformuje vysokofrekvenční CLK na nízkofrekvenční puls 'CE'.
 - Význam: Zpomaluje hru na hratelnou rychlost a synchronizuje timing všech bloků.
 
-2. DEBOUNCER (Input Sanitizer)
-------------------------------
+------------------------
+
+### 2. DEBOUNCER 
 - Účel:   Ošetření mechanických vstupů z tlačítek.
 - Funkce: Odstraňuje elektrické zákkmity (glitche) vznikající při stisku.
 - Výstup: Generuje čisté "One-Shot" pulsy (šířka 1 CLK) pro ovládání směru.
 
-3. SNAKE LOGIC (Game Engine / FSM)
-----------------------------------
+------------------------
+
+### 3. SNAKE LOGIC (Game Engine)
 - Účel:   Hlavní herní procesor a stavový automat.
 - Funkce: 
     * Výpočet souřadnic hlavy a segmentů těla.
@@ -67,8 +68,9 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
     * Správa herního stavu (Game Over, Score counting).
 - Data:   Vystupuje skóre (LED_SCORE) a video data (SEG_VID_OUT).
 
-4. DISPLAY CONTROL (V/O Driver)
--------------------------------
+------------------------
+
+### 4. DISPLAY CONTROL (V/O Driver)
 - Účel:   Ovladač rozhraní 7-segmentového displeje.
 - Funkce: Provádí časový multiplex pro 8 cifer (přepínání anod).
 - Převod: Dekóduje binární data z logiky na signály pro segmenty (katody).
