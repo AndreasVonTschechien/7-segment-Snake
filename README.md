@@ -111,7 +111,7 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 <br>
 
 * **Debouncer a zpracování tlačítek**
-    * Tlačítka jsou mechanická a při stisku generují krátké zákmity (digitální šum). Čip by tyto milisekundy trvající vibrace interpretoval jako desítky rychlých stisků za sebou.
+    * Tlačítka jsou mechanická a při stisku generují krátké zákmity (digitální šum). Čip by tyto milisekundy trvající vibrace interpretoval jako desítky rychlých stisků za sebou. Debouncer tyto zákmity filtruje. Počká na ustálení signálu a do systému propustí pouze jeden čistý logický pulz. Díky tomu hra reaguje na každé zmáčknutí přesně jednou a had se neotočí o 180 stupňů omylem.
     * Po ustálení signálu generuje `sig_press_...` krátký pulz pro jednorázové vyhodnocení stisku.
     * Signály `sig_direction` mění stav okamžitě po detekci stisku a drží hodnotu až do dalšího platného povelu.
 <img width="1200" height="500" alt="image" src="https://github.com/AndreasVonTschechien/7-segment-Snake/blob/main/direction_sim.png?raw=true" />
