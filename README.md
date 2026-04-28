@@ -99,7 +99,9 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 * **`SIG_BTN_X_PRESS`**: Vyčištěné pulsy z `DEBOUNCERu` o délce jednoho taktu `CLK`.
 * **`SIG_VID_OUT(63:0)`**: 64-bitová sběrnice nesoucí data o stavu "pixelů" (segmentů) pro zobrazení.
 
+<br>
 
+# Vývoj projektu 🚶
 
 
 
