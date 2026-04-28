@@ -130,7 +130,19 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 # Realizace 
 ### RTL schéma
 <img width="1482" height="460" alt="image" src="https://github.com/AndreasVonTschechien/7-segment-Snake/blob/main/block_diagram_of_VHDL_design.png?raw=true" />
+## Architektura systému (RTL schéma)
 
+Celý návrh je postaven na modulární architektuře, která odděluje zpracování vstupů, herní logiku a řízení displeje. Níže uvedená tabulka popisuje roli jednotlivých bloků v celkovém schématu.
+
+| Blok / Modul | Funkce a význam v systému |
+| :--- | :--- |
+| **`debounce_0` až `_3`** | **Ošetření vstupů:** Filtruje mechanické zákmity tlačítek a generuje čisté synchronní pulzy pro změnu směru. |
+| **`control_logic_0`** | **Správa směru:** Přijímá povely z debouncerů a udržuje stav aktuálního směru. Zabraňuje neplatným pohybům (např. otočení o 180° přímo do sebe). |
+| **`clk_en` & `counter`** | **Časování a Multiplex:** Generují povolovací signály (`ce`) pro rychlost hry a zajišťují přepínání anod pro multiplexní řízení displeje. |
+| **`movement_logic_0`** | **Herní engine:** Hlavní mozek hry. Na základě herního taktu a směru vypočítává pozici hada, detekuje kolize a generuje data pro obraz. |
+| **`RTL_INV` (Invertory)** | **Fyzické rozhraní:** Upravují logiku signálů pro displeje se společnou anodou (Active-Low), aby svit diod odpovídal logické jedničce v návrhu. |
+
+![RTL schéma systému](cesta/k/obrazku_schema.png)
 
 
 
