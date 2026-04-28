@@ -11,14 +11,11 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 
 
 ## Pravidla hry
-
-| Prvek | Popis a mechaniky |
-| :--- | :--- |
-| **Plocha** | 8 sedmisegmentovek (pole 3x16); displej = pozice hada. |
-| **Had** | Svítící segmenty, 4 směry pohybu, automatický posun, ovládání tlačítky. |
-| **Potrava** | Náhodný segment; po snědení: +délka, +skóre, +rychlost. |
-| **Kolize** | Konec při nárazu do sebe nebo zaplnění pole. Průchod zdmi je povolen. |
-| **Ostatní** | **Skóre:** 1 bod = 1 dioda. **Start/Restart:** vyhrazené tlačítko. |
+* **Herní plocha:** 8 sedmisegmentovek (3x16), každá jako jedna pozice hada.
+* **Had & Pohyb:** Svítící segmenty, 4 směry (↑ ↓ → ←), automatický posun, ovládání tlačítky.
+* **Potrava:** Náhodný segment; po snědení roste délka, skóre a rychlost pohybu.
+* **Kolize:** Konec hry při nárazu do sebe nebo zaplnění pole; průchod stěnami je povolen.
+* **Skóre & Ovládání:** Skóre zobrazeno diodami (1:1); tlačítko pro Start/Restart.
 
 ## LAB1 - 8.4.2026
 -adasdasd
