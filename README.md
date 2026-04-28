@@ -102,7 +102,8 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 <br>
 
 # Simulace komponentů
-
+<img width="1200" height="250" alt="image" src="https://github.com/AndreasVonTschechien/7-segment-Snake/blob/main/clock_sim.png?raw=true" />
+<img width="1200" height="500" alt="image" src="https://github.com/AndreasVonTschechien/7-segment-Snake/blob/main/direction_sim.png?raw=true" />
 
 asasd
 
