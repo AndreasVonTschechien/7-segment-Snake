@@ -34,7 +34,7 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 
 <br>
 
-* **Start / Restart:** Pro spuštění nebo restart hry po prohře slouží dedikované tlačítko umístěné ve středu ovládácích prvků. Po stisku tlačítka dojde k resetu programu, had se zmenší na původní velikost a vrátí na startovní souřadnice.
+* **Start / Restart:** Pro spuštění nebo restart hry po prohře slouží dedikované tlačítko umístěné ve středu ovládacích prvků. Po stisku tlačítka dojde k resetu programu, had se zmenší na původní velikost a vrátí na startovní souřadnice.
 
 <br>
 
@@ -101,7 +101,7 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 <br>
 <br>
 
-# Simulace komponentů
+# Simulace komponent
 * **Generátor Clock Enable (`ce`)**
     * Systémové hodiny (clk) tikají na vysoké frekvenci, což je pro mechaniku hada příliš rychlé.
     * Místo vytváření nových hodinových domén běží vše na jedné frekvenci, ale modul `ce` generuje v pravidelných intervalech krátký „povolující“ pulz, který dovolí hadovi udělat krok jen jednou za určitý čas, čímž zajišťuje konstantní a hratelnou rychlost.
