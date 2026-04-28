@@ -42,7 +42,7 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 
 <br>
 
-ℹ️# Základní informace k projektu
+# Základní informace k projektu ℹ️
 ### Blokové schéma projektu
 <img width="1200" height="600" alt="image" src="https://github.com/AndreasVonTschechien/7-segment-Snake/blob/main/7-SEGMENT%20SNAKE.jpg?raw=true" />
 
