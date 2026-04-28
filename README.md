@@ -44,7 +44,7 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 
 # Základní informace k projektu
 ### Blokové schéma projektu
-<img width="1482" height="460" alt="image" src="https://github.com/user-attachments/assets/c483349a-f2f5-41d2-9a9b-aedd91b4502a" />
+<img width="1200" height="800" alt="image" src="https://github.com/user-attachments/assets/c483349a-f2f5-41d2-9a9b-aedd91b4502a" />
 
 ### 1. CLK_EN (Clock Enable)
 - Účel:   Dělič frekvence systémových hodin (Frequency Divider).
@@ -70,11 +70,12 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 
 ------------------------
 
-### 4. DISPLAY CONTROL (V/O Driver)
+### 4. DISPLAY CONTROL (I/O Driver)
 - Účel:   Ovladač rozhraní 7-segmentového displeje.
 - Funkce: Provádí časový multiplex pro 8 cifer (přepínání anod).
 - Převod: Dekóduje binární data z logiky na signály pro segmenty (katody).
 
+<br>
 
 **Pro Jurkise TESTBENCH**
 
