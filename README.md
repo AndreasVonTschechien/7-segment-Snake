@@ -103,10 +103,19 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 <br>
 
 # Simulace komponentů
+* **Generátor Clock Enable (`ce`)**
+    * **Princip:** Pro stabilitu (eliminaci více hodinových domén) běží logika na vysokém `clk`, ale spouští se pouze při aktivním `ce`.
+    * **Funkce:** Generuje pulz o délce 1 taktu v definovaném intervalu, což zajišťuje fixní rychlost hry bez ohledu na krystal.
 <img width="1200" height="250" alt="image" src="https://github.com/AndreasVonTschechien/7-segment-Snake/blob/main/clock_sim.png?raw=true" />
+
+* **Debouncer a zpracování tlačítek**
+    * **Debouncing:** Modul aktivně filtruje zákmity z mechanických kontaktů na vstupech `btn_...`.
+    * **Detekce hran:** Po ustálení signálu generuje `sig_press_...` krátký pulz pro jednorázové vyhodnocení stisku.
+    * **Logika směru:** Signály `sig_direction` mění stav okamžitě po detekci stisku a drží hodnotu až do dalšího platného povelu.
 <img width="1200" height="500" alt="image" src="https://github.com/AndreasVonTschechien/7-segment-Snake/blob/main/direction_sim.png?raw=true" />
 
-asasd
+
+
 
 
 
