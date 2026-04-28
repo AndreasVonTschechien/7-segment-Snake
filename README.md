@@ -7,7 +7,7 @@
 ### Obsah
 * [Úvod](#uvod)
 * [Základní informace o projektu](#základní-informace-k-projektu-ℹ️)
-* [Simulace komponentů](#simulace-komponentů-👀)
+* [Simulace komponentů](#simulace-komponentů-🖭)
 * [Lab 3: Integration](#lab-3-integration)
 * [Lab 4: Tuning](#lab-4-tuning)
 * [Lab 5: Defense](#lab-5-defense)
@@ -101,7 +101,7 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 
 <br>
 
-# Simulace komponentů 👀
+# Simulace komponentů 🖭
 
 
 
