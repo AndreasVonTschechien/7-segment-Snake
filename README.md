@@ -132,7 +132,7 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 <img width="1482" height="460" alt="image" src="https://github.com/AndreasVonTschechien/7-segment-Snake/blob/main/block_diagram_of_VHDL_design.png?raw=true" />
 
 ## Architektura systému (RTL schéma)
-| Blok / Modul | Funkce | Význam v systému |
+| Blok / Modul | Funkce                   | Význam v systému |
 | :--- | :--- | :--- |
 | **`debounce`** | Ošetření vstupů | Filtruje mechanické zákmity tlačítek a generuje čisté synchronní pulzy pro změnu směru. Nebát tohoto modulu, had by se stal neovladatelným. |
 | **`control_logic`** | Správa směru | Přijímá povely z debouncerů a udržuje stav aktuálního směru. Zabraňuje neplatným pohybům (např. otočení o 180° přímo do sebe). |
