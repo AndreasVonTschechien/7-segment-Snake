@@ -6,7 +6,7 @@
 
 ### Obsah
 * [Úvod](#uvod)
-* [Lab 1: Architecture](#lab-1-architecture)
+* [CV1: Úvodní hodina](#cv1-1-uvodni-hodina)
 * [Lab 2: Unit Design](#lab-2-unit-design)
 * [Lab 3: Integration](#lab-3-integration)
 * [Lab 4: Tuning](#lab-4-tuning)
@@ -47,7 +47,7 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 
 
 
-## LAB1 - 8.4.2026
+## CV1 - Úvodní hodina (8.4.2026)
 -adasdasd
 <img width="1482" height="460" alt="image" src="https://github.com/AndreasVonTschechien/7-segment-Snake/blob/main/image.png?raw=true" />
 
