@@ -133,7 +133,7 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 
 ## Architektura systému (RTL schéma)
 | Blok / Modul | Funkce | Význam v systému |
-| :--- | :--- |
+| :--- | :--- | :--- |
 | **`debounce_0` až `_3`** | **Ošetření vstupů:** | Filtruje mechanické zákmity tlačítek a generuje čisté synchronní pulzy pro změnu směru. |
 | **`control_logic_0`** | **Správa směru:** | Přijímá povely z debouncerů a udržuje stav aktuálního směru. Zabraňuje neplatným pohybům (např. otočení o 180° přímo do sebe). |
 | **`clk_en` & `counter`** | **Časování a Multiplex:** | Generují povolovací signály (`ce`) pro rychlost hry a zajišťují přepínání anod pro multiplexní řízení displeje. |
