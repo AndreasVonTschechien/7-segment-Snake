@@ -9,8 +9,6 @@
 * [Základní informace o projektu](#základní-informace-k-projektu-ℹ️)
 * [Simulace komponentů](#simulace-komponentů)
 * [Realizace](#realizace)
-* [Lab 4: Tuning](#lab-4-tuning)
-* [Lab 5: Defense](#lab-5-defense)
 
 ## Úvod
 Cílem projektu je za pomoci 8 7-segmentových displejů vytvořit funkční a hratelnou verzi populární hry "Snake".
