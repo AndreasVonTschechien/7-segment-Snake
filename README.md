@@ -76,7 +76,7 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 
 <br>
 
-## 🔌 Rozhraní signálů (Entity I/O)
+## Rozhraní signálů (Entity I/O) 🔌
 ### Vstupní signály
 | Signál | Směr | Šířka | Popis |
 | :--- | :---: | :---: | :--- |
