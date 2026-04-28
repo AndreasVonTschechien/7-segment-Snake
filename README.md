@@ -49,6 +49,7 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 
 ## LAB1 - 8.4.2026
 -adasdasd
+<img width="1482" height="460" alt="image" src="https://github.com/AndreasVonTschechien/7-segment-Snake/blob/main/image.png?raw=true" />
 
 ## LAB2 - 15.4.2026
 -adasdasd
