@@ -82,7 +82,7 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 | Signál | Směr | Šířka | Popis |
 | :--- | :---: | :---: | :--- |
 | **`CLK`** | In | 1 bit | Hlavní systémový hodinový signál (např. 100 MHz). |
-| **`RST`** | In | 1 bit | Globální reset systému (uvádí hru do výchozího stavu). |
+| **`RST`** | In | 1 bit | Prostřední tlačítko, které uvádí hru do výchozího stavu. |
 | **`BTN_UP`** | In | 1 bit | Vstupní signál pro pohyb hada nahoru. |
 | **`BTN_DOWN`** | In | 1 bit | Vstupní signál pro pohyb hada dolů. |
 | **`BTN_LEFT`** | In | 1 bit | Vstupní signál pro pohyb hada doleva. |
