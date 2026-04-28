@@ -8,7 +8,7 @@
 * [Úvod](#uvod)
 * [Základní informace o projektu](#základní-informace-k-projektu-ℹ️)
 * [Simulace komponentů](#simulace-komponentů)
-* [Lab 3: Integration](#lab-3-integration)
+* [Realizace](realizace)
 * [Lab 4: Tuning](#lab-4-tuning)
 * [Lab 5: Defense](#lab-5-defense)
 
@@ -101,6 +101,7 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 * **`SIG_VID_OUT(63:0)`**: 64-bitová sběrnice nesoucí data o stavu "pixelů" (segmentů) pro zobrazení.
 
 <br>
+<br>
 
 # Simulace komponentů
 * **Generátor Clock Enable (`ce`)**
@@ -124,6 +125,42 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
    * Kolem času 250 ns dochází ke stisku tlačítka `s_btnu` (Nahoru). Simulace ověřuje funkci modulu `debounce.vhd` – signál směru `s_dir` se nezmění okamžitě, ale až po uplynutí filtrační doby definované čítačem debounceru. Poté směr plynule přechází na hodnotu `1`.
    * Po změně směru lze sledovat logiku „pěti pater“. Hodnota signálu segmentů `s_seg` se mění z počátečního `3f` (segment G) na `5f` (svislý segment F – schod) a nakonec na `7e` (horní vodorovný segment A). To dokazuje, že se had po displeji nepohybuje pouze lineárně, ale plně využívá celou plochu sedmisegmentové cifry.
 <img width="1482" height="460" alt="image" src="https://github.com/user-attachments/assets/2d1922b6-5d36-4442-9257-5b13d91029ca" />
+
+<br>
+<br>
+
+# Realizace 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
