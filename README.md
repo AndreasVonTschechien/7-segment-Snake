@@ -77,6 +77,56 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 
 <br>
 
+## 🔌 Rozhraní signálů
+### Vstupní signály (Inputs)
+| Signál | Směr | Šířka | Popis |
+| :--- | :---: | :---: | :--- |
+| **`CLK`** | In | 1 bit | Hlavní systémový hodinový signál (např. 100 MHz). |
+| **`RST`** | In | 1 bit | Globální reset systému (uvádí hru do výchozího stavu). |
+| **`BTN_UP`** | In | 1 bit | Vstupní signál pro pohyb hada nahoru. |
+| **`BTN_DOWN`** | In | 1 bit | Vstupní signál pro pohyb hada dolů. |
+| **`BTN_LEFT`** | In | 1 bit | Vstupní signál pro pohyb hada doleva. |
+| **`BTN_RIGHT`**| In | 1 bit | Vstupní signál pro pohyb hada doprava. |
+
+### Výstupní signály
+| Signál | Směr | Šířka | Popis |
+| :--- | :---: | :---: | :--- |
+| **`SEG(7:0)`** | Out | 8 bitů | Ovládání jednotlivých segmentů (A-G + DP) pro 7-segmentový displej. |
+| **`AN(7:0)`** | Out | 8 bitů | Společné anody pro výběr aktivní cifry (Multiplexing). |
+| **`LED(15:0)`**| Out | 16 bitů | Binární zobrazení skóre nebo stavu hry na řadě LED diod. |
+
+## 🛰️ Interní propojení
+* **`SIG_CE`**: Pomalý synchronizační puls z `CLK_EN`, který řídí taktování logiky a displeje.
+* **`SIG_BTN_X_PRESS`**: Vyčištěné pulsy z `DEBOUNCERu` o délce jednoho taktu `CLK`.
+* **`SIG_VID_OUT(63:0)`**: 64-bitová sběrnice nesoucí data o stavu "pixelů" (segmentů) pro zobrazení.
+* **`SIG_LED_SCORE(15:0)`**: Aktuální stav skóre předávaný z herní logiky na výstupní piny.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 **Pro Jurkise TESTBENCH**
 
 Verifikace návrhu (Simulace)
