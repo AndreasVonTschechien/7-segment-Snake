@@ -78,31 +78,28 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 <br>
 
 ## 🔌 Rozhraní signálů (Entity I/O)
-
 ### Vstupní signály
 | Signál | Směr | Šířka | Popis |
 | :--- | :---: | :---: | :--- |
-| **`clk`** | In | 1 bit | Hlavní hodinový signál. |
-| **`btnc`** | In | 1 bit | Středové tlačítko (Center) – v projektu slouží jako **Reset**. |
-| **`btņu`** | In | 1 bit | Tlačítko Up (Nahoru). |
-| **`btnd`** | In | 1 bit | Tlačítko Down (Dolů). |
-| **`btnl`** | In | 1 bit | Tlačítko Left (Doleva). |
-| **`btnr`** | In | 1 bit | Tlačítko Right (Doprava). |
+| **`CLK`** | In | 1 bit | Hlavní systémový hodinový signál (např. 100 MHz). |
+| **`RST`** | In | 1 bit | Globální reset systému (uvádí hru do výchozího stavu). |
+| **`BTN_UP`** | In | 1 bit | Vstupní signál pro pohyb hada nahoru. |
+| **`BTN_DOWN`** | In | 1 bit | Vstupní signál pro pohyb hada dolů. |
+| **`BTN_LEFT`** | In | 1 bit | Vstupní signál pro pohyb hada doleva. |
+| **`BTN_RIGHT`**| In | 1 bit | Vstupní signál pro pohyb hada doprava. |
 
 ### Výstupní signály
 | Signál | Směr | Šířka | Popis |
 | :--- | :---: | :---: | :--- |
-| **`an[7:0]`** | Out | 8 bitů | Aktivace 8 cifer displeje. |
-| **`seg[6:0]`**| Out | 7 bitů | Katody segmentů A-G. |
+| **`SEG(7:0)`** | Out | 8 bitů | Ovládání jednotlivých segmentů (A-G + DP) pro 7-segmentový displej. |
+| **`AN(7:0)`** | Out | 8 bitů | Společné anody pro výběr aktivní cifry (Multiplexing). |
+| **`LED(15:0)`**| Out | 16 bitů | Binární zobrazení skóre nebo stavu hry na řadě LED diod. |
 
-## 🛠️ Interní struktura a moduly
-1. **Debounce (0-3):** Čtyři samostatné instance pro ošetření směrových tlačítek.
-2. **Clock Enablers (`clk_0`, `clk_1`):** Parametrizované děličky pro různé časové domény (rychlost hry vs. multiplexing).
-3. **Counters (`cnt_an_0`, `cnt_seg_0`):** 3-bitové čítače zajišťující cyklování mezi ciframi a segmenty.
-4. **Control Logic:** Převádí impulzy z debouncerů na stavové signály směru (`direction_up`, atd.).
-5. **Movement Logic:** Hlavní herní procesor, který na základě směru a času generuje obrazová data pro displej.
-6. **RTL_INV:** Koncové invertory zajišťující správnou polaritu pro fyzické zapojení displeje (Active Low).
-
+## 🛰️ Interní propojení (Internal Signals)
+* **`SIG_CE`**: Pomalý synchronizační puls z `CLK_EN`, který řídí taktování logiky a displeje.
+* **`SIG_BTN_X_PRESS`**: Vyčištěné pulsy z `DEBOUNCERu` o délce jednoho taktu `CLK`.
+* **`SIG_VID_OUT(63:0)`**: 64-bitová sběrnice nesoucí data o stavu "pixelů" (segmentů) pro zobrazení.
+* **`SIG_LED_SCORE(15:0)`**: Aktuální stav skóre předávaný z herní logiky na výstupní piny.
 
 
 
