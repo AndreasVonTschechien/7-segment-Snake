@@ -6,7 +6,7 @@
 
 ### Obsah
 * [Úvod](#uvod)
-* [CV1: Úvodní hodina](#cv1-1-uvodni-hodina)
+* [CV1: Úvodní hodina](#cv1-1-Úvodní-hodina)
 * [Lab 2: Unit Design](#lab-2-unit-design)
 * [Lab 3: Integration](#lab-3-integration)
 * [Lab 4: Tuning](#lab-4-tuning)
