@@ -1,4 +1,7 @@
-### 7-segment-Snake
+# 7-segment-Snake
+## Cíl projektu
+Cílem projektu je za pomoci 8 7-segmentových displejů vytvořit funkční a hratelnou verzi populární hry "Snake".
+
 
 ## Pravidla
 
