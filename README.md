@@ -104,14 +104,16 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 
 # Simulace komponentů
 * **Generátor Clock Enable (`ce`)**
-    * **Princip:** Pro stabilitu (eliminaci více hodinových domén) běží logika na vysokém `clk`, ale spouští se pouze při aktivním `ce`.
-    * **Funkce:** Generuje pulz o délce 1 taktu v definovaném intervalu, což zajišťuje fixní rychlost hry bez ohledu na krystal.
+    * Systémové hodiny (clk) tikají na vysoké frekvenci, což je pro mechaniku hada příliš rychlé.
+    * Místo vytváření nových (nestabilních) hodinových domén běží vše na jedné frekvenci, ale modul ce generuje v pravidelných intervalech krátký „povolující“ pulz. Ten slouží jako brána, která          dovolí hadovi udělat krok jen jednou za určitý čas, čímž zajišťuje konstantní a hratelnou rychlost.
 <img width="1200" height="250" alt="image" src="https://github.com/AndreasVonTschechien/7-segment-Snake/blob/main/clock_sim.png?raw=true" />
 
+<br>
+
 * **Debouncer a zpracování tlačítek**
-    * **Debouncing:** Modul aktivně filtruje zákmity z mechanických kontaktů na vstupech `btn_...`.
-    * **Detekce hran:** Po ustálení signálu generuje `sig_press_...` krátký pulz pro jednorázové vyhodnocení stisku.
-    * **Logika směru:** Signály `sig_direction` mění stav okamžitě po detekci stisku a drží hodnotu až do dalšího platného povelu.
+    * Tlačítka jsou mechanická a při stisku generují krátké zákmity (digitální šum). Čip by tyto milisekundy trvající vibrace interpretoval jako desítky rychlých stisků za sebou.
+    * Po ustálení signálu generuje `sig_press_...` krátký pulz pro jednorázové vyhodnocení stisku.
+    * Signály `sig_direction` mění stav okamžitě po detekci stisku a drží hodnotu až do dalšího platného povelu.
 <img width="1200" height="500" alt="image" src="https://github.com/AndreasVonTschechien/7-segment-Snake/blob/main/direction_sim.png?raw=true" />
 
 
