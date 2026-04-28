@@ -42,19 +42,12 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 
 <br>
 
-
-
-
-
-
-## CV1 - Úvodní hodina (8.4.2026)
--adasdasd
+#Základní informace k projektu
+### Blokové schéma projektu
 <img width="1482" height="460" alt="image" src="<img src="https://github.com/user-attachments/assets/c483349a-f2f5-41d2-9a9b-aedd91b4502a" />
 
-## LAB2 - 15.4.2026
--adasdasd
 
-## LAB3 - 22.4.2026
+
 
 **Pro Jurkise TESTBENCH**
 
