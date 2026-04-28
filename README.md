@@ -24,11 +24,11 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 
 <br>
 
-* **Start / Restart:** Pro spuštění nebo restart hry po prohře slouží dedikované tlačítko ve středu rozmístění.
+* **Start / Restart:** Pro spuštění nebo restart hry po prohře slouží dedikované tlačítko umístěné ve středu ovládácích prvků.
 
+<br>
 
-
-
+<br>
 
 
 
