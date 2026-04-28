@@ -1,6 +1,6 @@
 # SNA7E 🐍
 
-![Platform: AVR](https://img.shields.io/badge/platform-AVR-blue.svg)
+![Platform: AVR]([https://img.shields.io/badge/platform-AVR-blue.svg](https://gaudeamus.cz/seznam-skol/detail-skoly/schoolHash:1ecb2aebe6f6fe4c639e5bd817aef8eb))
 ![Language: C](https://img.shields.io/badge/language-C-orange.svg)
 ![Display: 7--Segment](https://img.shields.io/badge/display-7--segment-red.svg)
 
@@ -38,7 +38,7 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 
 <br>
 
-* **Start / Restart:** Pro spuštění nebo restart hry po prohře slouží dedikované tlačítko umístěné ve středu ovládácích prvků. Po stiksu tlačítka dojde k resetu programu, had se vyresetuje na původní velikost a vrátí na startovní souřadnice.
+* **Start / Restart:** Pro spuštění nebo restart hry po prohře slouží dedikované tlačítko umístěné ve středu ovládácích prvků. Po stisku tlačítka dojde k resetu programu, had se vyresetuje na původní velikost a vrátí na startovní souřadnice.
 
 <br>
 
