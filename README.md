@@ -9,16 +9,21 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 - Dorazil Matouš (269044)
 - Dostál Matěj (272709)
 
-
-
 ## Pravidla hry
+
 * **Herní plocha a Snake:** Pole tvoří 8 sedmisegmentových displejů (dohromady tvoří pole o 3 řadách a 16 sloupcích), kde každý segment představuje jednu pozici. Had se skládá ze svítících segmentů, pohybuje se automaticky ve 4 směrech a hráč mění směr tlačítky.
+
 <br>
-**Potrava a skóre:** Potrava se objevuje náhodně na segmentech. Po „sežrání“ se had prodlouží, zvýší se rychlost a skóre, které se zobrazuje pomocí diod (jeden bod = jedna svítící dioda).
+
+* **Potrava a skóre:** Potrava se objevuje náhodně na segmentech. Po „sežrání“ se had prodlouží, zvýší se rychlost a skóre, které se zobrazuje pomocí diod (jeden bod = jedna svítící dioda).
+
 <br>
-**Kolize a konec:** Hra končí, pokud had narazí do sebe nebo vyčerpá všechna pole. Z důvodu omezeného prostoru je umožněn průchod hranicemi arény ve všech směrech.
+
+* **Kolize a konec:** Hra končí, pokud had narazí do sebe nebo vyčerpá všechna pole. Z důvodu omezeného prostoru je umožněn průchod hranicemi arény ve všech směrech.
+
 <br>
-**Start / Restart:** Pro spuštění nebo restart hry po prohře slouží dedikované tlačítko ve středu rozmístění.
+
+* **Start / Restart:** Pro spuštění nebo restart hry po prohře slouží dedikované tlačítko ve středu rozmístění.
 
 ## LAB1 - 8.4.2026
 -adasdasd
