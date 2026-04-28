@@ -1,8 +1,7 @@
 # SNA7E 🐍
-
-![Platform: AVR]([https://img.shields.io/badge/platform-AVR-blue.svg](https://gaudeamus.cz/seznam-skol/detail-skoly/schoolHash:1ecb2aebe6f6fe4c639e5bd817aef8eb))
-![Language: C](https://img.shields.io/badge/language-C-orange.svg)
-![Display: 7--Segment](https://img.shields.io/badge/display-7--segment-red.svg)
+[![University: VUT FEKT](https://img.shields.io/badge/VUT-FEKT-blue?style=flat-square&logo=university&logoColor=white)](https://www.fekt.vut.cz/)
+[![Language: VHDL](https://img.shields.io/badge/language-VHDL-purple?style=flat-square&logo=intel&logoColor=white)](https://en.wikipedia.org/wiki/VHDL)
+[![Hardware: 7-Segment](https://img.shields.io/badge/display-7--Segment-red?style=flat-square&logo=circuitpython&logoColor=white)](https://en.wikipedia.org/wiki/Seven-segment_display)
 
 
 ### Obsah
