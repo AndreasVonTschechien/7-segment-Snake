@@ -120,8 +120,8 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 
 * **Simulace ovládání hada**
    * Na začátku časové osy je aktivován signál `s_btnc` (Reset). Dojde k nastavení výchozí pozice hada na střed displeje (s_x = 3, s_y = 2), což odpovídá čtvrté cifře zprava a prostřednímu    segmentu G. Směr pohybu je zahájen doprava `s_dir = 4`.
-   * V průběhu simulace je patrné, jak se s každým přetečením vnitřního čítače mění hodnota souřadnice `s_x` (z 3 na 2 a následně na 1). Tomu odpovídá i změna aktivní anody `s_an[7:0]` (hodnoty fb a fd), což potvrzuje, že se had korektně přesouvá mezi jednotlivými ciframi displeje.
-   * Kolem času 250 ns dochází ke stisku tlačítka `s_btnu` (Nahoru). Simulace ověřuje funkci modulu `debounce.vhd` – signál směru `s_dir` se nezmění okamžitě, ale až po uplynutí filtrační doby definované čítačem debounceru. Poté směr plynule přechází na hodnotu `1` (Nahoru).
+   * V průběhu simulace je patrné, jak se s každým přetečením vnitřního čítače mění hodnota souřadnice `s_x` (3 → 2 → 1). Tomu odpovídá i změna aktivní anody `s_an[7:0]` (hodnoty fb a fd), což potvrzuje, že se had korektně přesouvá mezi jednotlivými ciframi displeje.
+   * Kolem času 250 ns dochází ke stisku tlačítka `s_btnu` (Nahoru). Simulace ověřuje funkci modulu `debounce.vhd` – signál směru `s_dir` se nezmění okamžitě, ale až po uplynutí filtrační doby definované čítačem debounceru. Poté směr plynule přechází na hodnotu `1`.
    * Po změně směru lze sledovat logiku „pěti pater“. Hodnota signálu segmentů `s_seg` se mění z počátečního `3f` (segment G) na `5f` (svislý segment F – schod) a nakonec na `7e` (horní vodorovný segment A). To dokazuje, že se had po displeji nepohybuje pouze lineárně, ale plně využívá celou plochu sedmisegmentové cifry.
 <img width="1482" height="460" alt="image" src="https://github.com/user-attachments/assets/2d1922b6-5d36-4442-9257-5b13d91029ca" />
 
