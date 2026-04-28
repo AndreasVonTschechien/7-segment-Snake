@@ -1,4 +1,4 @@
-# 7-segment-Snake
+### 7-segment-Snake
 
 ## Pravidla
 
