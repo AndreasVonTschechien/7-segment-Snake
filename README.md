@@ -5,14 +5,14 @@
 
 
 ### Obsah
-* [Cíl projektu](#cíl-projektu)
+* [Úvod](#uvod)
 * [Lab 1: Architecture](#lab-1-architecture)
 * [Lab 2: Unit Design](#lab-2-unit-design)
 * [Lab 3: Integration](#lab-3-integration)
 * [Lab 4: Tuning](#lab-4-tuning)
 * [Lab 5: Defense](#lab-5-defense)
 
-## Cíl projektu
+## Úvod
 Cílem projektu je za pomoci 8 7-segmentových displejů vytvořit funkční a hratelnou verzi populární hry "Snake".
 Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn krátkým videem, plakátem formátu A3 a přehledným repozitářem na GitHubu.
 
