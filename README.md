@@ -3,6 +3,12 @@
 Cílem projektu je za pomoci 8 7-segmentových displejů vytvořit funkční a hratelnou verzi populární hry "Snake".
 Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn krátkým videem, plakátem formátu A3 a přehledným repozitářem na GitHubu.
 
+### Členové týmu
+- Ondřej Gracias (269670)
+- Matěj Jurka (269810)
+- Dorazil Matouš (269044)
+- Dostál Matěj (272709)
+
 
 ## Pravidla
 
@@ -57,9 +63,4 @@ Závěr simulace:Simulace potvrdila, že systém správně interpretuje stisky t
 <img width="1482" height="460" alt="image" src="https://github.com/user-attachments/assets/2d1922b6-5d36-4442-9257-5b13d91029ca" />
 
 
-**Členové týmu:**
-- Ondřej Gracias (269670)
-- Matěj Jurka (269810)
-- Dorazil Matouš (269044)
-- Dostál Matěj (272709)
 
