@@ -10,33 +10,15 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 - Dostál Matěj (272709)
 
 
-## Pravidla
+## Pravidla hry
 
-- **Herní plocha:**
-  - tvořena 8 sedmisegmentovými displeji vedle sebe (tvoří pole o rozměrech 3x16)
-  - každý displej představuje jednu pozici hada
-
-- **Snake:**
-  - had se skládá z několika svítících segmentů
-  - může se pohybovat ve 4 směrech: ↑ ↓ → ←
-  - had se automaticky posouvá v daném směru v pravidelném intervalu
-  - hráč může měnit směr hada tlačítky
-
-- **Potrava:**
-  - potrava se objevuje náhodně na jednom ze segmentů displeje
-  - po „sežrání“ potravy se had prodlouží, zvýší se skóre a zvýší rychlost pohybu
-
-- **Kolize:**
-  - hra končí, pokud:
-    - had narazí do sebe
-    - nebo vyčerpal všechna dostupná pole
-  - z důvodu omezeného herního prostoru je umožněn průchod hranicemi arény ve všech směrech
-
-- **Skóre:**
-  - skóre se zobrazuje pomocí svitu diod → jeden bod = jedna svítící dioda
-
-- **Start / Restart:**
-  - tlačítko pro spuštění nebo restart hry po prohře
+| Prvek | Popis a mechaniky |
+| :--- | :--- |
+| **Plocha** | 8 sedmisegmentovek (pole 3x16); displej = pozice hada. |
+| **Had** | Svítící segmenty, 4 směry pohybu, automatický posun, ovládání tlačítky. |
+| **Potrava** | Náhodný segment; po snědení: +délka, +skóre, +rychlost. |
+| **Kolize** | Konec při nárazu do sebe nebo zaplnění pole. Průchod zdmi je povolen. |
+| **Ostatní** | **Skóre:** 1 bod = 1 dioda. **Start/Restart:** vyhrazené tlačítko. |
 
 ## LAB1 - 8.4.2026
 -adasdasd
