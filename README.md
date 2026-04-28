@@ -55,7 +55,7 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 
 ### 2. DEBOUNCER 
 - Účel:   Ošetření mechanických vstupů z tlačítek.
-- Funkce: Odstraňuje elektrické zákkmity (glitche) vznikající při stisku.
+- Funkce: Odstraňuje elektrické zákmity (glitche) vznikající při stisku.
 - Výstup: Generuje čisté "One-Shot" pulsy (šířka 1 CLK) pro ovládání směru.
 
 ------------------------
