@@ -42,7 +42,7 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 
 <br>
 
-#Základní informace k projektu
+# Základní informace k projektu
 ### Blokové schéma projektu
 <img width="1482" height="460" alt="image" src="<img src="https://github.com/user-attachments/assets/c483349a-f2f5-41d2-9a9b-aedd91b4502a" />
 
