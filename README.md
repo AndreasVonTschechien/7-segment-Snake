@@ -1,6 +1,7 @@
 # 7-segment-Snake
 ## Cíl projektu
 Cílem projektu je za pomoci 8 7-segmentových displejů vytvořit funkční a hratelnou verzi populární hry "Snake".
+Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn krátkým videem, plakátem formátu A3 a přehledným repozitářem na GitHubu.
 
 
 ## Pravidla
