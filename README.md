@@ -8,7 +8,7 @@
 * [Úvod](#uvod)
 * [Základní informace o projektu](#základní-informace-k-projektu-ℹ️)
 * [Simulace komponentů](#simulace-komponentů)
-* [Realizace](realizace)
+* [Realizace](#realizace)
 * [Lab 4: Tuning](#lab-4-tuning)
 * [Lab 5: Defense](#lab-5-defense)
 
