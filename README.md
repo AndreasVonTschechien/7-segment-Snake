@@ -6,7 +6,7 @@
 
 ### Obsah
 * [Úvod](#uvod)
-* [Základní informace](#základní-informace)
+* [Základní informace o projektu](#základní-informace-k-projektu)
 * [Lab 2: Unit Design](#lab-2-unit-design)
 * [Lab 3: Integration](#lab-3-integration)
 * [Lab 4: Tuning](#lab-4-tuning)
