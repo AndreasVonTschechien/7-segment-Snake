@@ -196,7 +196,7 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 * Signál `sig_seg` je modul, který úspěšně transformuje souřadnice bloku rekordů snake a food na budicí signály segmentů. Hodnota `7e` při nulté anodě prokazuje správné vykreslení hlavy hada na horním segmentu `(A)`. Hodnota `77` při sedmé anodě prokazuje korektní zobrazení potravy na spodním segmentu `(D)`.
 <img src="https://github.com/AndreasVonTschechien/7-segment-Snake/blob/main/TestBenches/tb_snake_display.png?raw=true" />
 
-* **[📄 Odkaz na TestBench komponenty snake_display](./SNAKE_FINAL.srcs/sim_1/new/tb_snake_display.vhd)**
+* **[📄 Odkaz na TestBench komponenty SNAKE DISPLAY](./SNAKE_FINAL.srcs/sim_1/new/tb_snake_display.vhd)**
 
 <br>
 
