@@ -145,7 +145,7 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 <br> 
 
 # Finalizace projektu
-## RTL schéma
+### RTL schéma
 * **[📄 Odkaz na kompletní RTL schéma v PDF](./my_snake_schematic.pdf)**
 
 ### Popis jednotlivých bloků
