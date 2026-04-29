@@ -134,7 +134,7 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 ## Architektura systému (RTL schéma)
 | Blok / Modul | Funkce| Význam v systému |
 | :--- | :--- | :--- |
-| **`debounce`** | Ošetření vstupů | Filtruje mechanické zákmity tlačítek a generuje čisté synchronní pulzy pro změnu směru. Nebát tohoto modulu, had by se stal neovladatelným. |
+| **`debounce`** | Ošetření vstupů | Filtruje mechanické zákmity tlačítek a generuje čisté synchronní pulzy pro změnu směru. Nebýt tohoto modulu, had by se stal neovladatelným. |
 | **`control_logic`** | Správa směru | Přijímá povely z debouncerů a udržuje stav aktuálního směru. Zabraňuje neplatným pohybům (např. otočení o 180° přímo do sebe). |
 | **`clk_en` & `counter`** | Časování & Multiplex | Generují povolovací signály (`ce`) pro rychlost hry a zajišťují přepínání anod pro multiplexní řízení displeje. |
 | **`movement_logic`** | Herní engine: | Hlavní mozek hry. Na základě herního taktu a směru vypočítává pozici hada, detekuje kolize a generuje data pro obraz. |
