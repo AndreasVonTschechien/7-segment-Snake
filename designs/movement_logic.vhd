@@ -559,85 +559,72 @@ begin
     end process cookie;
 
     display_driver : process(clk)
-        variable sig_seg_tmp : std_logic_vector(6 downto 0);
-        variable sig_an_tmp  : std_logic_vector(7 downto 0);
-        variable sig_cookie_seg_trans : std_logic_vector(6 downto 0);
-        variable sig_cookie_an_trans  : std_logic_vector(7 downto 0);
     begin
         if rising_edge(clk) then
-    
-            sig_seg_tmp := (others => '0');
-            sig_an_tmp  := (others => '0');
+            
+            data_seg <= (others => '1');
+            data_an  <= (others => '1');
 
             if rst = '1' then
                 sig_index <= 0;
-            elsif sig_index < length then
-    
-                case sig_shift_reg_seg(sig_index) is
-                    when seg_A => sig_seg_tmp := "1111110";
-                    when seg_B => sig_seg_tmp := "1111101";
-                    when seg_C => sig_seg_tmp := "1111011";
-                    when seg_D => sig_seg_tmp := "1110111";
-                    when seg_E => sig_seg_tmp := "1101111";
-                    when seg_F => sig_seg_tmp := "1011111";
-                    when seg_G => sig_seg_tmp := "0111111";
-                    when others => sig_seg_tmp := "1111111";
-                end case;
-    
-                case sig_shift_reg_an(sig_index) is
-                    when an_0 => sig_an_tmp := "11111110";
-                    when an_1 => sig_an_tmp := "11111101";
-                    when an_2 => sig_an_tmp := "11111011";
-                    when an_3 => sig_an_tmp := "11110111";
-                    when an_4 => sig_an_tmp := "11101111";
-                    when an_5 => sig_an_tmp := "11011111";
-                    when an_6 => sig_an_tmp := "10111111";
-                    when an_7 => sig_an_tmp := "01111111";
-                    when others => sig_an_tmp := "11111111";
-                end case;
-    
-            end if;
-    
-            sig_cookie_seg_trans := (others => '0');
-            sig_cookie_an_trans  := (others => '0');
-            
-            case cookie_seg is
-                when seg_A => sig_cookie_seg_trans := "1111110";
-                when seg_B => sig_cookie_seg_trans := "1111101";
-                when seg_C => sig_cookie_seg_trans := "1111011";
-                when seg_D => sig_cookie_seg_trans := "1110111";
-                when seg_E => sig_cookie_seg_trans := "1101111";
-                when seg_F => sig_cookie_seg_trans := "1011111";
-                when seg_G => sig_cookie_seg_trans := "0111111";
-                when others => sig_cookie_seg_trans := "1111111";
-            end case;
-    
-            case cookie_an is
-                when an_0 => sig_cookie_an_trans := "11111110";
-                when an_1 => sig_cookie_an_trans := "11111101";
-                when an_2 => sig_cookie_an_trans := "11111011";
-                when an_3 => sig_cookie_an_trans := "11110111";
-                when an_4 => sig_cookie_an_trans := "11101111";
-                when an_5 => sig_cookie_an_trans := "11011111";
-                when an_6 => sig_cookie_an_trans := "10111111";
-                when an_7 => sig_cookie_an_trans := "01111111";
-                when others => sig_cookie_an_trans := "11111111";
-            end case;
-    
-            if sig_shift_reg_seg(sig_index) = cookie_seg and sig_shift_reg_an(sig_index) = cookie_an then
-                sig_seg_tmp := sig_seg_tmp or sig_cookie_seg_trans;
-                sig_an_tmp  := sig_an_tmp  or sig_cookie_an_trans;
-            end if;
-    
-            data_seg <= sig_seg_tmp;
-            data_an  <= sig_an_tmp;
-    
-            if sig_index = length - 1 then
-                sig_index <= 0;
             else
-                sig_index <= sig_index + 1;
-            end if;
+                
+                if sig_index < length then
+                    case sig_shift_reg_seg(sig_index) is
+                        when seg_A => data_seg <= "1111110";
+                        when seg_B => data_seg <= "1111101";
+                        when seg_C => data_seg <= "1111011";
+                        when seg_D => data_seg <= "1110111";
+                        when seg_E => data_seg <= "1101111";
+                        when seg_F => data_seg <= "1011111";
+                        when seg_G => data_seg <= "0111111";
+                        when others => data_seg <= "1111111";
+                    end case;
     
+                    case sig_shift_reg_an(sig_index) is
+                        when an_0 => data_an <= "11111110";
+                        when an_1 => data_an <= "11111101";
+                        when an_2 => data_an <= "11111011";
+                        when an_3 => data_an <= "11110111";
+                        when an_4 => data_an <= "11101111";
+                        when an_5 => data_an <= "11011111";
+                        when an_6 => data_an <= "10111111";
+                        when an_7 => data_an <= "01111111";
+                        when others => data_an <= "11111111";
+                    end case;
+    
+                elsif sig_index = length then
+                    case cookie_seg is
+                        when seg_A => data_seg <= "1111110";
+                        when seg_B => data_seg <= "1111101";
+                        when seg_C => data_seg <= "1111011";
+                        when seg_D => data_seg <= "1110111";
+                        when seg_E => data_seg <= "1101111";
+                        when seg_F => data_seg <= "1011111";
+                        when seg_G => data_seg <= "0111111";
+                        when others => data_seg <= "1111111";
+                    end case;
+    
+                    case cookie_an is
+                        when an_0 => data_an <= "11111110";
+                        when an_1 => data_an <= "11111101";
+                        when an_2 => data_an <= "11111011";
+                        when an_3 => data_an <= "11110111";
+                        when an_4 => data_an <= "11101111";
+                        when an_5 => data_an <= "11011111";
+                        when an_6 => data_an <= "10111111";
+                        when an_7 => data_an <= "01111111";
+                        when others => data_an <= "11111111";
+                    end case;
+                end if;
+    
+                if sig_index = length then 
+                    sig_index <= 0;
+                else
+                    sig_index <= sig_index + 1;
+                end if;
+    
+            end if;
         end if;
     end process display_driver;
    
