@@ -106,7 +106,7 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 * **Generátor Clock Enable (`ce`)**
     * Systémové hodiny (clk) tikají na vysoké frekvenci, což je pro mechaniku hada příliš rychlé.
     * Místo vytváření nových hodinových domén běží vše na jedné frekvenci, ale modul `ce` generuje v pravidelných intervalech krátký „povolující“ pulz, který dovolí hadovi udělat krok jen jednou za určitý čas, čímž zajišťuje konstantní a hratelnou rychlost.
-<img width="1200" height="250" alt="image" src="https://github.com/AndreasVonTschechien/7-segment-Snake/blob/main/clock_sim.png?raw=true" />
+<img width="1200" height="250" alt="image" src="https://github.com/AndreasVonTschechien/7-segment-Snake/blob/main/TestBenches/clock_sim.png?raw=true" />
 
 <br>
 
@@ -114,7 +114,7 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
     * Tlačítka jsou mechanická a při stisku generují krátké zákmity (digitální šum). Čip by tyto milisekundy trvající vibrace interpretoval jako desítky rychlých stisků za sebou. Debouncer tyto zákmity filtruje. Počká na ustálení signálu a do systému propustí pouze jeden čistý logický pulz. Díky tomu hra reaguje na každé zmáčknutí přesně jednou a had se neotočí o 180 stupňů omylem.
     * Po ustálení signálu generuje `sig_press_...` krátký pulz pro jednorázové vyhodnocení stisku.
     * Signály `sig_direction` mění stav okamžitě po detekci stisku a drží hodnotu až do dalšího platného povelu.
-<img width="1200" height="500" alt="image" src="https://github.com/AndreasVonTschechien/7-segment-Snake/blob/main/direction_sim.png?raw=true" />
+<img width="1200" height="500" alt="image" src="https://github.com/AndreasVonTschechien/7-segment-Snake/blob/main/TestBenches/direction_sim.png?raw=true" />
 
 <br>
 
@@ -131,7 +131,7 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 # Základní pohyb hada po displeji
 ### RTL schéma
 * Toto RTL schéma je základní kostra projektu. Tento program zastřešuje základní pohyb hada po zvolené hrací ploše 3x16.
-<img width="1482" height="560" alt="image" src="https://github.com/AndreasVonTschechien/7-segment-Snake/blob/main/block_diagram_of_VHDL_design.png?raw=true" />
+<img width="1482" height="560" alt="image" src="https://github.com/AndreasVonTschechien/7-segment-Snake/blob/main/Schémata/block_diagram_of_VHDL_design.png?raw=true" />
 
 ### Popis jednotlivých bloků
 | Blok / Modul | Funkce| Význam v systému |
@@ -147,7 +147,7 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 
 # Finalizace projektu
 ### RTL schéma
-* **[📄 Odkaz na kompletní RTL schéma v PDF](./my_snake_schematic.pdf)**
+* **[📄 Odkaz na kompletní RTL schéma v PDF](./Schémata/my_snake_schematic.pdf)**
 
 ### Popis jednotlivých bloků
 | Modul / Blok | Funkce / Význam v systému | Klíčové informace |
@@ -165,14 +165,14 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 ### TestBench komponenty COUNTER
    * Hlavní náplní tohoto bloku je lineární čítání pulzů, které deklaruje výstupní port `cnt`. Na simulačním průběhu můžeme jasně vidět stabilitu návrhu: modul korektně reaguje na synchronní reset, který má prioritu před všemi ostatními operacemi.  Klíčovou funkcí je zde deklarovaný vstup `en` (enable).
    * Simulace prokazuje, že čítač inkrementuje svou hodnotu pouze v případě, že je tento signál aktivní. V opačném případě modul uchovává svůj stav, což je nezbytné pro správnou funkci časování v nadřazeném systému hry Snake. Ověřili jsme také chování při přetečení, kdy modul po dosažení binární hodnoty `111` (dekadicky 7) plynule přechází zpět na hodnotu `000`, čímž deklaruje správnou funkci modulo aritmetiky v rámci definovaného rozsahu `G_BITS`.
-<img src="https://github.com/AndreasVonTschechien/7-segment-Snake/blob/main/tb_counter.png?raw=true" />
+<img src="https://github.com/AndreasVonTschechien/7-segment-Snake/blob/main/TestBenches/tb_counter.png?raw=true" />
 
 <br> 
 
 ### TestBench komponenty DEBOUNCE
 * Hlavní náplní tohoto bloku je filtrace vstupních signálů z mechanických tlačítek, která používají vnitřní posuvný registr pro eliminaci zákmitů. Na simulaci je patrné, že modul ignoruje úvodní sekvenci šumu na vstupu `btn_in`. Výstupní stav `btn_state` se mění na logickou jedničku až po uplynutí doby nezbytné pro stabilizaci signálu v celém rozsahu registru.
 * Klíčovým prvkem návrhu je deklarace pulzu `btn_press`. Jak prokazuje časový diagram, tento výstup generuje signál o šířce jednoho hodinového cyklu okamžitě po validaci stisku. Tento mechanismus je kritický pro herní mechaniku, protože zajišťuje, že každý fyzický stisk tlačítka vyvolá v systému právě jednu akci, bez ohledu na délku stisku nebo kvalitu kontaktů tlačítka.
-<img src="https://github.com/AndreasVonTschechien/7-segment-Snake/blob/main/tb_debounce.png?raw=true" />
+<img src="https://github.com/AndreasVonTschechien/7-segment-Snake/blob/main/TestBenches/tb_debounce.png?raw=true" />
 
 <br>
 
@@ -186,7 +186,7 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 ### TestBench komponenty SNAKE DISPLAY
 * Hlavní náplní této simulace je ověření správnosti multiplexního řízení a segmentového dekodéru. Signál `sig_an` je modul, který deklaruje korektní postupné spínání anod v závislosti na čítači `mux_cnt`. Hodnoty `fe` až `7f` potvrzují, že je v každý okamžik aktivní právě jeden displej v režimu společné anody.
 * Signál `sig_seg` je modul, který úspěšně transformuje souřadnice bloku rekordů snake a food na budicí signály segmentů. Hodnota `7e` při nulté anodě prokazuje správné vykreslení hlavy hada na horním segmentu `(A)`. Hodnota `77` při sedmé anodě prokazuje korektní zobrazení potravy na spodním segmentu `(D)`.
-<img src="https://github.com/AndreasVonTschechien/7-segment-Snake/blob/main/tb_snake_display.png?raw=true" />
+<img src="https://github.com/AndreasVonTschechien/7-segment-Snake/blob/main/TestBenches/tb_snake_display.png?raw=true" />
 
 <br>
 
