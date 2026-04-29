@@ -157,19 +157,23 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 <br> 
 
 ### TestBench komponenty DEBOUNCE
+* Hlavní náplní tohoto bloku je filtrace vstupních signálů z mechanických tlačítek, která používají vnitřní posuvný registr pro eliminaci zákmitů. Na simulaci je patrné, že modul ignoruje úvodní sekvenci šumu na vstupu `btn_in`. Výstupní stav `btn_state` se mění na logickou jedničku až po uplynutí doby nezbytné pro stabilizaci signálu v celém rozsahu registru.
+* Klíčovým prvkem návrhu je deklarace pulzu `btn_press`. Jak prokazuje časový diagram, tento výstup generuje signál o šířce jednoho hodinového cyklu okamžitě po validaci stisku. Tento mechanismus je kritický pro herní mechaniku, protože zajišťuje, že každý fyzický stisk tlačítka vyvolá v systému právě jednu akci, bez ohledu na délku stisku nebo kvalitu kontaktů tlačítka.
 <img src="https://github.com/AndreasVonTschechien/7-segment-Snake/blob/main/tb_debounce.png?raw=true" />
-* Hlavní náplní tohoto bloku je filtrace vstupních signálů z mechanických tlačítek, která používají vnitřní posuvný registr pro eliminaci zákmitů.   Na simulaci je patrné, že modul ignoruje úvodní sekvenci šumu na vstupu `btn_in`. Výstupní stav `btn_state` se mění na logickou jedničku až po uplynutí doby nezbytné pro stabilizaci signálu v celém rozsahu registru.   Klíčovým prvkem návrhu je deklarace pulzu `btn_press`. Jak prokazuje časový diagram, tento výstup generuje signál o šířce jednoho hodinového cyklu okamžitě po validaci stisku.  Tento mechanismus je kritický pro herní mechaniku, protože zajišťuje, že každý fyzický stisk tlačítka vyvolá v systému právě jednu akci, bez ohledu na délku stisku nebo kvalitu kontaktů tlačítka.
 
 <br>
 
 ### TestBench komponenty SNAKE CONTROL
+* Signál `sig_clk` generuje stabilní hodinový takt (10 ns) pro veškerou vnitřní synchronizaci bloku. Signál `sig_ce_game` určuje přesný moment, kdy se souřadnice hada přepočítají a posunou. Signál `sig_rst_btn` vynuluje na začátku herní stav a deklaruje startovní pozici hlavy na souřadnicích `x=7, y=4`.
+* Signály `sig_u` a `sig_r` určují vstupní směrové povely (`Up, Right`) ... vidíme, že změna směru v paměti proběhne okamžitě, ale fyzický pohyb v datech nastane až s následným pulsem `sig_ce_game`.  Signál `sig_snake_out (x, y)` ovládá pohyb doprava (hodnota `x(0)` se postupně mění ze 7 na 8 a následně na 9, zatímco `y(0)` zůstává konstantní) a pohyb nahoru (po aktivaci `sig_u` se hodnota `x(0)` ustálí na 9 a začne klesat hodnota `y(0)` (4 → 3 → 2 → 1)). Signál `sig_snake_out.len` zůstává na hodnotě 1, protože v simulaci nedošlo ke kolizi hada s potravou.
 <img width="1442" height="288" alt="image" src="https://github.com/user-attachments/assets/6bef37b1-a6b6-48fb-815e-81cb69d1069f" />
-Signál `sig_clk` generuje stabilní hodinový takt (10 ns) pro veškerou vnitřní synchronizaci bloku. Signál `sig_ce_game` určuje přesný moment, kdy se souřadnice hada přepočítají a posunou. Signál `sig_rst_btn` vynuluje na začátku herní stav a deklaruje startovní pozici hlavy na souřadnicích `x=7, y=4`. Signály `sig_u` a `sig_r` určují vstupní směrové povely (`Up, Right`) ... vidíme, že změna směru v paměti proběhne okamžitě, ale fyzický pohyb v datech nastane až s následným pulsem `sig_ce_game`.  Signál `sig_snake_out (x, y)` ovládá pohyb doprava (hodnota `x(0)` se postupně mění ze 7 na 8 a následně na 9, zatímco `y(0)` zůstává konstantní) a pohyb nahoru (po aktivaci `sig_u` se hodnota `x(0)` ustálí na 9 a začne klesat hodnota `y(0)` (4 → 3 → 2 → 1)). Signál `sig_snake_out.len` zůstává na hodnotě 1, protože v simulaci nedošlo ke kolizi hada s potravou."
+
 <br>
 
 ### TestBench komponenty SNAKE DISPLAY
+* Hlavní náplní této simulace je ověření správnosti multiplexního řízení a segmentového dekodéru. Signál `sig_an` je modul, který deklaruje korektní postupné spínání anod v závislosti na čítači `mux_cnt`. Hodnoty `fe` až `7f` potvrzují, že je v každý okamžik aktivní právě jeden displej v režimu společné anody.
+* Signál `sig_seg` je modul, který úspěšně transformuje souřadnice bloku rekordů snake a food na budicí signály segmentů. Hodnota `7e` při nulté anodě prokazuje správné vykreslení hlavy hada na horním segmentu `(A)`. Hodnota `77` při sedmé anodě prokazuje korektní zobrazení potravy na spodním segmentu `(D)`.
 <img src="https://github.com/AndreasVonTschechien/7-segment-Snake/blob/main/tb_snake_display.png?raw=true" />
-* Hlavní náplní této simulace je ověření správnosti multiplexního řízení a segmentového dekodéru. Signál `sig_an` je modul, který deklaruje korektní postupné spínání anod v závislosti na čítači `mux_cnt`. Hodnoty `fe` až `7f` potvrzují, že je v každý okamžik aktivní právě jeden displej v režimu společné anody. Signál `sig_seg` je modul, který úspěšně transformuje souřadnice bloku rekordů snake a food na budicí signály segmentů. Hodnota `7e` při nulté anodě prokazuje správné vykreslení hlavy hada na horním segmentu `(A)`. Hodnota `77` při sedmé anodě prokazuje korektní zobrazení potravy na spodním segmentu `(D)`.
 
 <br>
 
