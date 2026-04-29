@@ -163,8 +163,12 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 
 ### TestBench komponenty SNAKE CONTROL
 <img width="1442" height="288" alt="image" src="https://github.com/user-attachments/assets/6bef37b1-a6b6-48fb-815e-81cb69d1069f" />
-* Signál `sig_clk` generuje stabilní hodinový takt (10 ns) pro veškerou vnitřní synchronizaci bloku. Signál `sig_ce_game` určuje přesný moment, kdy se souřadnice hada přepočítají a posunou. Signál `sig_rst_btn` vynuluje na začátku herní stav a deklaruje startovní pozici hlavy na souřadnicích `x=7, y=4`. Signály `sig_u` a `sig_r` určují vstupní směrové povely (`Up, Right`) ... vidíme, že změna směru v paměti proběhne okamžitě, ale fyzický pohyb v datech nastane až s následným pulsem `sig_ce_game`.  Signál `sig_snake_out (x, y)` ovládá pohyb doprava (hodnota `x(0)` se postupně mění ze 7 na 8 a následně na 9, zatímco `y(0)` zůstává konstantní) a pohyb nahoru (po aktivaci `sig_u` se hodnota `x(0)` ustálí na 9 a začne klesat hodnota `y(0)` (4 → 3 → 2 → 1)). Signál `sig_snake_out.len` zůstává na hodnotě 1, protože v simulaci nedošlo ke kolizi hada s potravou.
-
+* [cite_start]**`sig_clk`**: Generuje stabilní hodinový takt (10 ns) pro veškerou vnitřní synchronizaci bloku[cite: 48].
+* **`sig_ce_game`**: Určuje přesný moment, kdy se souřadnice hada přepočítají a posunou[cite: 61].
+* [cite_start]**`sig_rst_btn`**: Vynuluje na začátku herní stav a deklaruje startovní pozici hlavy na souřadnicích `x=7, y=4`.
+* **`sig_u` a **`sig_r`**: Určují vstupní směrové povely (`Up, Right`). [cite_start]Změna směru v paměti proběhne okamžitě, ale fyzický pohyb v datech nastane až s následným pulsem `sig_ce_game`[cite: 70, 71, 74].
+* [cite_start]**`sig_snake_out (x, y)`**: Ovládá pohyb doprava (hodnota `x(0)` se postupně mění ze 7 na 8 a následně na 9, zatímco `y(0)` zůstává konstantní) a pohyb nahoru (po aktivaci `sig_u` se hodnota `x(0)` ustálí na 9 a začne klesat hodnota `y(0)` z 4 na 3, 2 a 1)[cite: 75, 76, 78, 79].
+* [cite_start]**`sig_snake_out.len`**: Zůstává na hodnotě 1, protože v simulaci nedošlo ke kolizi hada s potravou.
 <br>
 
 ### TestBench komponenty SNAKE DISPLAY
