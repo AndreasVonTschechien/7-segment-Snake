@@ -8,7 +8,7 @@
 * [Úvod](#uvod)
 * [Základní informace o projektu](#základní-informace-k-projektu-ℹ️)
 * [Simulace komponentů](#simulace-komponent)
-* [Realizace](#realizace)
+* [Architektura projektu](#architektura-projektu)
 
 ## Úvod
 Cílem projektu je za pomoci 8 7-segmentových displejů vytvořit funkční a hratelnou verzi populární hry "Snake".
@@ -127,11 +127,11 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 <br>
 <br>
 
-# Realizace 
+# Architektura projektu 
 ### RTL schéma
 <img width="1482" height="460" alt="image" src="https://github.com/AndreasVonTschechien/7-segment-Snake/blob/main/block_diagram_of_VHDL_design.png?raw=true" />
 
-## Architektura systému (RTL schéma)
+### Popis bloků RTL schématu
 | Blok / Modul | Funkce| Význam v systému |
 | :--- | :--- | :--- |
 | **`debounce`** | Ošetření vstupů | Filtruje mechanické zákmity tlačítek a generuje čisté synchronní pulzy pro změnu směru. Nebýt tohoto modulu, had by se stal neovladatelným. |
