@@ -167,7 +167,7 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
    * Simulace prokazuje, že čítač inkrementuje svou hodnotu pouze v případě, že je tento signál aktivní. V opačném případě modul uchovává svůj stav, což je nezbytné pro správnou funkci časování v nadřazeném systému hry Snake. Ověřili jsme také chování při přetečení, kdy modul po dosažení binární hodnoty `111` (dekadicky 7) plynule přechází zpět na hodnotu `000`, čímž deklaruje správnou funkci modulo aritmetiky v rámci definovaného rozsahu `G_BITS`.
 <img src="https://github.com/AndreasVonTschechien/7-segment-Snake/blob/main/TestBenches/tb_counter.png?raw=true" />
 
-* **[📄 Odkaz na TestBench](./SNAKE_FINAL.srcs/sim_1/new/tb_counter.vhd.pdf)**
+* **[📄 Odkaz na TestBench komponenty COUNTER](./SNAKE_FINAL.srcs/sim_1/new/tb_counter.vhd)**
 
 
 <br> 
