@@ -146,7 +146,7 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 
 # Finalizace projektu
 ## RTL schéma
-[![RTL Schéma Náhled](./img/nahled_schematu.png)](./7-segment-Snake/my_snake_schematic.pdf)
+[![RTL Schéma Náhled](.nahled.png)](.my_snake_schematic.pdf)
 *Kliknutím na obrázek otevřete plné schéma v PDF.*
 
 ### TestBench komponenty COUNTER
