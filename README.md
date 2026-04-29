@@ -147,7 +147,19 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 # Finalizace projektu
 ## RTL schéma
 * **[📄 Odkaz na kompletní RTL schéma v PDF](./my_snake_schematic.pdf)**
+  
+<br> 
 
+### Popis jednotlivých bloků
+| Modul / Blok | Funkce / Význam v systému | Klíčové informace |
+| :--- | :--- | :--- |
+| **DEB_U, D, L, R, C** | **Debouncer** (Ošetření tlačítek) | [cite_start]Hlavní náplní je filtrace mechanických zákmitů tlačítek[cite: 3, 6, 14, 18, 23]. [cite_start]Deklaruje čistý puls `press` pro synchronní zpracování směru[cite: 10, 24]. |
+| **CLK_GM** | **Game Clock Enable** (Dělička hry) | [cite_start]Generuje pomalý puls pro řízení rychlosti pohybu hada[cite: 15]. [cite_start]Využívá generické parametry pro nastavení frekvence (např. 2 Hz)[cite: 16]. |
+| **CLK_MUX** | **Mux Clock Enable** (Dělička displeje) | [cite_start]Deklaruje rychlý takt pro přepínání (multiplexování) sedmisegmentových displejů[cite: 19, 20], aby nedocházelo k blikání obrazu. |
+| **GAME_CTRL** | **Snake Control** (Herní jádro) | Představuje "mozek" hry. [cite_start]Vypočítává pohyb, detekuje kolize a spravuje pozici jídla[cite: 25, 116]. [cite_start]Komunikuje skrze komplexní záznamy (Records)[cite: 26, 39, 40]. |
+| **CNT_MUX** | **Counter** (Adresace displejů) | [cite_start]Tříbitový čítač, který cykluje mezi adresami 0 až 7[cite: 118, 120]. [cite_start]Tím určuje, která anoda displeje je aktuálně aktivní[cite: 119]. |
+| **DISP_DRV** | **Snake Display** (Grafický řadič) | [cite_start]Zajišťuje transformaci souřadnic hada na konkrétní segmenty displeje[cite: 74, 117]. [cite_start]Deklaruje logiku pro vykreslování jídla a těla hada[cite: 121, 123]. |
+| **SCORE_DRV** | **Snake Score** (Indikace skóre) | [cite_start]Převádí aktuální délku hada z modulu `snake_control` na vizuální zobrazení[cite: 70, 73]. [cite_start]Ovládá 16 LED diod na desce FPGA[cite: 72]. |
 
 ### TestBench komponenty COUNTER
    * Hlavní náplní tohoto bloku je lineární čítání pulzů, které deklaruje výstupní port `cnt`. Na simulačním průběhu můžeme jasně vidět stabilitu návrhu: modul korektně reaguje na synchronní reset, který má prioritu před všemi ostatními operacemi.  Klíčovou funkcí je zde deklarovaný vstup `en` (enable).
