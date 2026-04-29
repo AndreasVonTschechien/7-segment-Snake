@@ -186,6 +186,7 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 * Signály `sig_u` a `sig_r` určují vstupní směrové povely (`Up, Right`) ... vidíme, že změna směru v paměti proběhne okamžitě, ale fyzický pohyb v datech nastane až s následným pulsem `sig_ce_game`.  Signál `sig_snake_out (x, y)` ovládá pohyb doprava (hodnota `x(0)` se postupně mění ze 7 na 8 a následně na 9, zatímco `y(0)` zůstává konstantní) a pohyb nahoru (po aktivaci `sig_u` se hodnota `x(0)` ustálí na 9 a začne klesat hodnota `y(0)` (4 → 3 → 2 → 1)). Signál `sig_snake_out.len` zůstává na hodnotě 1, protože v simulaci nedošlo ke kolizi hada s potravou.
 <img width="1442" height="288" alt="image" src="https://github.com/user-attachments/assets/6bef37b1-a6b6-48fb-815e-81cb69d1069f" />
 <br>
+
 * **[📄 Odkaz na TestBench komponenty SNAKE CONTROL](./SNAKE_FINAL.srcs/sim_1/new/tb_snake_control.vhd)**
 
 <br>
