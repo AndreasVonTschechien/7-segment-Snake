@@ -43,7 +43,7 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 
 # Základní informace k projektu ℹ️
 ### Blokové schéma projektu
-<img width="1200" height="600" alt="image" src="https://github.com/AndreasVonTschechien/7-segment-Snake/blob/main/7-SEGMENT%20SNAKE.jpg?raw=true" />
+<img width="1200" height="600" alt="image" src="https://github.com/AndreasVonTschechien/7-segment-Snake/blob/main/Schémata/7-SEGMENT%20SNAKE.jpg?raw=true" />
 
 
 ### 1. CLK_EN (Clock Enable)
