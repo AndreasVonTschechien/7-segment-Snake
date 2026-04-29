@@ -139,7 +139,13 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 | **`clk_en` & `counter`** | Časování & Multiplex | Generují povolovací signály (`ce`) pro rychlost hry a zajišťují přepínání anod pro multiplexní řízení displeje. |
 | **`movement_logic`** | Herní engine: | Hlavní mozek hry. Na základě herního taktu a směru vypočítává pozici hada, detekuje kolize a generuje data pro obraz. |
 
+<br> 
 
+<br> 
+
+### Finalizace
+
+Hlavní náplní tohoto bloku je lineární čítání pulzů, které deklaruje výstupní port cnt. Na simulačním průběhu můžeme jasně vidět stabilitu návrhu: modul korektně reaguje na synchronní reset, který má prioritu před všemi ostatními operacemi.  Klíčovou funkcí je zde deklarovaný vstup en (enable). Simulace prokazuje, že čítač inkrementuje svou hodnotu pouze v případě, že je tento signál aktivní. V opačném případě modul uchovává svůj stav, což je nezbytné pro správnou funkci časování v nadřazeném systému hry Snake.  Ověřili jsme také chování při přetečení, kdy modul po dosažení binární hodnoty '111' (dekadicky 7) plynule přechází zpět na hodnotu '000', čímž deklaruje správnou funkci modulo aritmetiky v rámci definovaného rozsahu G_BITS.
 
 
 
