@@ -144,7 +144,11 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 
 <br> 
 
-## Finalizace projektu
+# Finalizace projektu
+## RTL schéma
+[![RTL Schéma Náhled](./img/nahled_schematu.png)](./7-segment-Snake/my_snake_schematic.pdf)
+*Kliknutím na obrázek otevřete plné schéma v PDF.*
+
 ### TestBench komponenty COUNTER
 <img src="https://github.com/AndreasVonTschechien/7-segment-Snake/blob/main/tb_counter.png?raw=true" />
 Hlavní náplní tohoto bloku je lineární čítání pulzů, které deklaruje výstupní port cnt. Na simulačním průběhu můžeme jasně vidět stabilitu návrhu: modul korektně reaguje na synchronní reset, který má prioritu před všemi ostatními operacemi.  Klíčovou funkcí je zde deklarovaný vstup en (enable). Simulace prokazuje, že čítač inkrementuje svou hodnotu pouze v případě, že je tento signál aktivní. V opačném případě modul uchovává svůj stav, což je nezbytné pro správnou funkci časování v nadřazeném systému hry Snake.  Ověřili jsme také chování při přetečení, kdy modul po dosažení binární hodnoty '111' (dekadicky 7) plynule přechází zpět na hodnotu '000', čímž deklaruje správnou funkci modulo aritmetiky v rámci definovaného rozsahu G_BITS.
@@ -178,7 +182,7 @@ sig_snake_out.len: Zůstává na hodnotě 1, protože v simulaci nedošlo ke kol
 
 sig_seg: Blok úspěšně transformuje souřadnice rekordů snake a food na budicí signály segmentů. Hodnota 7e při nulté anodě prokazuje správné vykreslení hlavy hada na horním segmentu (A). Hodnota 77 při sedmé anodě prokazuje korektní zobrazení potravy na spodním segmentu (D).
 
-
+<br>
 
 
 
