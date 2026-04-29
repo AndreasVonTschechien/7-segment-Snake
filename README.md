@@ -129,7 +129,7 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 
 # Základní pohyb hada po displeji
 ### RTL schéma
-* Toto RTL schéma je základní kostra projektu. Tento program zastřešujě základní pohyb hada po zvolené hrací ploše 3x16.
+* Toto RTL schéma je základní kostra projektu. Tento program zastřešuje základní pohyb hada po zvolené hrací ploše 3x16.
 <img width="1482" height="560" alt="image" src="https://github.com/AndreasVonTschechien/7-segment-Snake/blob/main/block_diagram_of_VHDL_design.png?raw=true" />
 
 ### Popis bloků RTL schématu
