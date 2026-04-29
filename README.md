@@ -147,7 +147,10 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 <img src="https://github.com/AndreasVonTschechien/7-segment-Snake/blob/main/tb_counter.png?raw=true" />
 Hlavní náplní tohoto bloku je lineární čítání pulzů, které deklaruje výstupní port cnt. Na simulačním průběhu můžeme jasně vidět stabilitu návrhu: modul korektně reaguje na synchronní reset, který má prioritu před všemi ostatními operacemi.  Klíčovou funkcí je zde deklarovaný vstup en (enable). Simulace prokazuje, že čítač inkrementuje svou hodnotu pouze v případě, že je tento signál aktivní. V opačném případě modul uchovává svůj stav, což je nezbytné pro správnou funkci časování v nadřazeném systému hry Snake.  Ověřili jsme také chování při přetečení, kdy modul po dosažení binární hodnoty '111' (dekadicky 7) plynule přechází zpět na hodnotu '000', čímž deklaruje správnou funkci modulo aritmetiky v rámci definovaného rozsahu G_BITS.
 
+<br> 
 
+<img src="https://github.com/AndreasVonTschechien/7-segment-Snake/blob/main/tb_counter.png?raw=true" />
+Hlavní náplní tohoto bloku je filtrace vstupních signálů z mechanických tlačítek, která deklaruje vnitřní posuvný registr pro eliminaci zákmitů.   Na simulaci je patrné, že modul ignoruje úvodní sekvenci šumu na vstupu btn_in. Výstupní stav btn_state se mění na logickou jedničku až po uplynutí doby nezbytné pro stabilizaci signálu v celém rozsahu registru.   Klíčovým prvkem návrhu je deklarace pulzu btn_press. Jak prokazuje časový diagram, tento výstup generuje signál o šířce jednoho hodinového cyklu okamžitě po validaci stisku.  Tento mechanismus je kritický pro herní mechaniku, protože zajišťuje, že každý fyzický stisk tlačítka vyvolá v systému právě jednu akci, bez ohledu na délku stisku nebo kvalitu kontaktů tlačítka.
 
 
 
