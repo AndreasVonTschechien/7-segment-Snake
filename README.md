@@ -151,7 +151,8 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 
 ### TestBench komponenty COUNTER
 <img src="https://github.com/AndreasVonTschechien/7-segment-Snake/blob/main/tb_counter.png?raw=true" />
-* Hlavní náplní tohoto bloku je lineární čítání pulzů, které deklaruje výstupní port cnt. Na simulačním průběhu můžeme jasně vidět stabilitu návrhu: modul korektně reaguje na synchronní reset, který má prioritu před všemi ostatními operacemi.  Klíčovou funkcí je zde deklarovaný vstup en (enable). Simulace prokazuje, že čítač inkrementuje svou hodnotu pouze v případě, že je tento signál aktivní. V opačném případě modul uchovává svůj stav, což je nezbytné pro správnou funkci časování v nadřazeném systému hry Snake.  Ověřili jsme také chování při přetečení, kdy modul po dosažení binární hodnoty '111' (dekadicky 7) plynule přechází zpět na hodnotu '000', čímž deklaruje správnou funkci modulo aritmetiky v rámci definovaného rozsahu G_BITS.
+* Hlavní náplní tohoto bloku je lineární čítání pulzů, které deklaruje výstupní port cnt. Na simulačním průběhu můžeme jasně vidět stabilitu návrhu: modul korektně reaguje na synchronní reset, který má prioritu před všemi ostatními operacemi.  Klíčovou funkcí je zde deklarovaný vstup en (enable).
+* Simulace prokazuje, že čítač inkrementuje svou hodnotu pouze v případě, že je tento signál aktivní. V opačném případě modul uchovává svůj stav, což je nezbytné pro správnou funkci časování v nadřazeném systému hry Snake.  Ověřili jsme také chování při přetečení, kdy modul po dosažení binární hodnoty '111' (dekadicky 7) plynule přechází zpět na hodnotu '000', čímž deklaruje správnou funkci modulo aritmetiky v rámci definovaného rozsahu G_BITS.
 
 <br> 
 
@@ -163,12 +164,7 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 
 ### TestBench komponenty SNAKE CONTROL
 <img width="1442" height="288" alt="image" src="https://github.com/user-attachments/assets/6bef37b1-a6b6-48fb-815e-81cb69d1069f" />
-* [cite_start]**`sig_clk`**: Generuje stabilní hodinový takt (10 ns) pro veškerou vnitřní synchronizaci bloku[cite: 48].
-* **`sig_ce_game`**: Určuje přesný moment, kdy se souřadnice hada přepočítají a posunou[cite: 61].
-* [cite_start]**`sig_rst_btn`**: Vynuluje na začátku herní stav a deklaruje startovní pozici hlavy na souřadnicích `x=7, y=4`.
-* **`sig_u` a **`sig_r`**: Určují vstupní směrové povely (`Up, Right`). [cite_start]Změna směru v paměti proběhne okamžitě, ale fyzický pohyb v datech nastane až s následným pulsem `sig_ce_game`[cite: 70, 71, 74].
-* [cite_start]**`sig_snake_out (x, y)`**: Ovládá pohyb doprava (hodnota `x(0)` se postupně mění ze 7 na 8 a následně na 9, zatímco `y(0)` zůstává konstantní) a pohyb nahoru (po aktivaci `sig_u` se hodnota `x(0)` ustálí na 9 a začne klesat hodnota `y(0)` z 4 na 3, 2 a 1)[cite: 75, 76, 78, 79].
-* [cite_start]**`sig_snake_out.len`**: Zůstává na hodnotě 1, protože v simulaci nedošlo ke kolizi hada s potravou.
+Signál `sig_clk` generuje stabilní hodinový takt (10 ns) pro veškerou vnitřní synchronizaci bloku. Signál `sig_ce_game` určuje přesný moment, kdy se souřadnice hada přepočítají a posunou. Signál `sig_rst_btn` vynuluje na začátku herní stav a deklaruje startovní pozici hlavy na souřadnicích `x=7, y=4`. Signály `sig_u` a `sig_r` určují vstupní směrové povely (`Up, Right`) ... vidíme, že změna směru v paměti proběhne okamžitě, ale fyzický pohyb v datech nastane až s následným pulsem `sig_ce_game`.  Signál `sig_snake_out (x, y)` ovládá pohyb doprava (hodnota `x(0)` se postupně mění ze 7 na 8 a následně na 9, zatímco `y(0)` zůstává konstantní) a pohyb nahoru (po aktivaci `sig_u` se hodnota `x(0)` ustálí na 9 a začne klesat hodnota `y(0)` (4 → 3 → 2 → 1)). Signál `sig_snake_out.len` zůstává na hodnotě 1, protože v simulaci nedošlo ke kolizi hada s potravou."
 <br>
 
 ### TestBench komponenty SNAKE DISPLAY
