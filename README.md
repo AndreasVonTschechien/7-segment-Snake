@@ -7,7 +7,7 @@
 ### Obsah
 * [Úvod](#uvod)
 * [Základní informace o projektu](#základní-informace-k-projektu-ℹ️)
-* [Simulace komponentů](#simulace-komponentů)
+* [Simulace komponentů](#simulace-komponent)
 * [Realizace](#realizace)
 
 ## Úvod
