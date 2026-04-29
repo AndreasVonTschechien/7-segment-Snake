@@ -156,8 +156,16 @@ Hlavní náplní tohoto bloku je filtrace vstupních signálů z mechanických t
 
 
 
-
-
+### TestBench komponenty SNAKE CONTROL
+<img width="1442" height="288" alt="image" src="https://github.com/user-attachments/assets/6bef37b1-a6b6-48fb-815e-81cb69d1069f" />
+sig_clk: Generuje stabilní hodinový takt (10 ns) pro veškerou vnitřní synchronizaci bloku.  
+sig_ce_game: „Herní tik“ (v simulaci každých 100 ns); určuje přesný moment, kdy se souřadnice hada přepočítají a posunou.  
+sig_rst_btn: Na začátku (0–20 ns) vynuluje herní stav a deklaruje startovní pozici hlavy na souřadnicích x=7, y=4 .  
+sig_u & sig_r: Vstupní směrové povely (Up, Right); vidíme, že změna směru v paměti proběhne okamžitě, ale fyzický pohyb v datech nastane až s následným pulsem sig_ce_game .  
+sig_snake_out (x, y):
+Pohyb Doprava: Hodnota x(0) se postupně mění ze 7 na 8 a následně na 9, zatímco y(0) zůstává konstantní .  
+Pohyb Nahoru: Po aktivaci sig_u se hodnota x(0) ustálí na 9 a začne klesat hodnota y(0) (ze 4 na 3, pak 2 a 1) .  
+sig_snake_out.len: Zůstává na hodnotě 1, protože v simulaci nedošlo ke kolizi s potravou, což deklaruje správnou stabilitu délky při běžném pohybu .
 
 
 
