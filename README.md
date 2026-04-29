@@ -151,8 +151,11 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 
 * **TestBench komponenty COUNTER**
 <img src="https://github.com/AndreasVonTschechien/7-segment-Snake/blob/main/tb_counter.png?raw=true" />
-   * Hlavní náplní tohoto bloku je lineární čítání pulzů, které deklaruje výstupní port cnt. Na simulačním průběhu můžeme jasně vidět stabilitu návrhu: modul korektně reaguje na synchronní reset, který má prioritu před všemi ostatními operacemi.  Klíčovou funkcí je zde deklarovaný vstup en (enable).
-   * Simulace prokazuje, že čítač inkrementuje svou hodnotu pouze v případě, že je tento signál aktivní. V opačném případě modul uchovává svůj stav, což je nezbytné pro správnou funkci časování v nadřazeném systému hry Snake.  Ověřili jsme také chování při přetečení, kdy modul po dosažení binární hodnoty '111' (dekadicky 7) plynule přechází zpět na hodnotu '000', čímž deklaruje správnou funkci modulo aritmetiky v rámci definovaného rozsahu G_BITS.
+* **Simulace čítače**
+* [cite_start]Na simulačním průběhu je patrná stabilita návrhu: modul korektně reaguje na synchronní reset `rst` [cite: 13][cite_start], který má prioritu před všemi ostatními operacemi[cite: 18].
+* [cite_start]Klíčovou funkcí bloku je deklarovaný vstup `en` (Enable)[cite: 14]. [cite_start]Simulace prokazuje, že vnitřní signál `sig_cnt` [cite: 16] [cite_start]inkrementuje svou hodnotu pouze v případě, že je tento signál aktivní[cite: 19].
+* [cite_start]V opačném případě modul uchovává svůj aktuální stav, což je nezbytné pro správnou funkci časování v nadřazeném systému hry Snake[cite: 20].
+* [cite_start]Ověřili jsme také chování při přetečení (wrap-around), kdy modul po dosažení binární hodnoty `111` (dekadicky 7 pro `G_BITS = 3`) plynule přechází zpět na hodnotu `000`[cite: 12, 15, 19]. Tím je potvrzena správná funkce modulo aritmetiky v rámci definovaného rozsahu `G_BITS`[cite: 12].
 
 <br> 
 
