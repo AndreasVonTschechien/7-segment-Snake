@@ -9,6 +9,7 @@
 * [Základní informace o projektu](#základní-informace-k-projektu-ℹ️)
 * [Simulace komponentů](#simulace-komponent)
 * [Základní pohyb hada po displeji](#základní-pohyb-hada-po-displeji)
+* [Finalizace projektu](#Finalizace-projektu)
 
 ## Úvod
 Cílem projektu je za pomoci 8 7-segmentových displejů vytvořit funkční a hratelnou verzi populární hry "Snake".
