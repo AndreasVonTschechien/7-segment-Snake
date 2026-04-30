@@ -107,6 +107,7 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
     * Systémové hodiny (clk) tikají na vysoké frekvenci, což je pro mechaniku hada příliš rychlé.
     * Místo vytváření nových hodinových domén běží vše na jedné frekvenci, ale modul `ce` generuje v pravidelných intervalech krátký „povolující“ pulz, který dovolí hadovi udělat krok jen jednou za určitý čas, čímž zajišťuje konstantní a hratelnou rychlost.
 <img width="1200" height="250" alt="image" src="https://github.com/AndreasVonTschechien/7-segment-Snake/blob/main/TestBenches/clock_sim.png?raw=true" />
+
 * **[📄 Odkaz na TestBench komponenty CLOCK ENABLE](./tb_and_sim/clk_en_tb.vhd)**
 
 <br>
@@ -116,6 +117,8 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
     * Po ustálení signálu generuje `sig_press_...` krátký pulz pro jednorázové vyhodnocení stisku.
     * Signály `sig_direction` mění stav okamžitě po detekci stisku a drží hodnotu až do dalšího platného povelu.
 <img width="1200" height="500" alt="image" src="https://github.com/AndreasVonTschechien/7-segment-Snake/blob/main/TestBenches/direction_sim.png?raw=true" />
+
+* **[📄 Odkaz na TestBench komponenty DEBOUNCE (neupravená verze)](./tb_and_sim/debounce_tb.vhd)**
 
 <br>
 
