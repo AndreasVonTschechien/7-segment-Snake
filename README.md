@@ -50,18 +50,19 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 ### Vstupní signály
 | Signál | Směr | Šířka | Popis |
 | :--- | :---: | :---: | :--- |
-| **`CLK`** | In | 1 bit | Hlavní systémový hodinový signál (např. 100 MHz). |
-| **`RST`** | In | 1 bit | Prostřední tlačítko, které uvádí hru do výchozího stavu. |
-| **`BTN_UP`** | In | 1 bit | Vstupní signál pro pohyb hada nahoru. |
-| **`BTN_DOWN`** | In | 1 bit | Vstupní signál pro pohyb hada dolů. |
-| **`BTN_LEFT`** | In | 1 bit | Vstupní signál pro pohyb hada doleva. |
-| **`BTN_RIGHT`**| In | 1 bit | Vstupní signál pro pohyb hada doprava. |
+| **`CLK`** | In | 1 bit | Hlavní systémový hodinový signál. |
+| **`BTNC`** | In | 1 bit | Vstupní signál z tlačítka, který uvádí hru do výchozího stavu. |
+| **`BTNU`** | In | 1 bit | Vstupní signál z tlačítka pro pohyb hada nahoru. |
+| **`BTND`** | In | 1 bit | Vstupní signál z tlačítka pro pohyb hada dolů. |
+| **`BTNL`** | In | 1 bit | Vstupní signál z tlačítka pro pohyb hada doleva. |
+| **`BTNR`**| In | 1 bit | Vstupní signál z tlačítka pro pohyb hada doprava. |
 
 ### Výstupní signály
 | Signál | Směr | Šířka | Popis |
 | :--- | :---: | :---: | :--- |
-| **`SEG(7:0)`** | Out | 8 bitů | Ovládání jednotlivých segmentů (A-G + DP) pro 7-segmentový displej. |
+| **`SEG(6:0)`** | Out | 7 bitů | Ovládání jednotlivých segmentů (A-G) pro 7-segmentový displej. |
 | **`AN(7:0)`** | Out | 8 bitů | Společné anody pro výběr aktivní cifry (Multiplexing). |
+| **`LED(15:0)`** | Out | 16 bitů | . |
 
 ### Vnitřní propojení
 * **`SIG_CE`**: Pomalý synchronizační puls z `CLK_EN`, který řídí taktování logiky a displeje.
