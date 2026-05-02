@@ -1,8 +1,3 @@
-# =================================================
-# Nexys A7-50T - General Constraints File
-# Based on https://github.com/Digilent/digilent-xdc
-# =================================================
-
 # -----------------------------------------------
 # Clock
 # -----------------------------------------------
@@ -17,26 +12,6 @@ set_property -dict { PACKAGE_PIN M18 IOSTANDARD LVCMOS33 } [get_ports {btnu}];
 set_property -dict { PACKAGE_PIN P17 IOSTANDARD LVCMOS33 } [get_ports {btnl}];
 set_property -dict { PACKAGE_PIN M17 IOSTANDARD LVCMOS33 } [get_ports {btnr}];
 set_property -dict { PACKAGE_PIN P18 IOSTANDARD LVCMOS33 } [get_ports {btnd}];
-
-# -----------------------------------------------
-# Switches
-# -----------------------------------------------
-set_property -dict { PACKAGE_PIN J15 IOSTANDARD LVCMOS33 } [get_ports {sw[0]}];
-set_property -dict { PACKAGE_PIN L16 IOSTANDARD LVCMOS33 } [get_ports {sw[1]}];
-set_property -dict { PACKAGE_PIN M13 IOSTANDARD LVCMOS33 } [get_ports {sw[2]}];
-set_property -dict { PACKAGE_PIN R15 IOSTANDARD LVCMOS33 } [get_ports {sw[3]}];
-set_property -dict { PACKAGE_PIN R17 IOSTANDARD LVCMOS33 } [get_ports {sw[4]}];
-set_property -dict { PACKAGE_PIN T18 IOSTANDARD LVCMOS33 } [get_ports {sw[5]}];
-set_property -dict { PACKAGE_PIN U18 IOSTANDARD LVCMOS33 } [get_ports {sw[6]}];
-set_property -dict { PACKAGE_PIN R13 IOSTANDARD LVCMOS33 } [get_ports {sw[7]}];
-set_property -dict { PACKAGE_PIN T8  IOSTANDARD LVCMOS18 } [get_ports {sw[8]}];
-set_property -dict { PACKAGE_PIN U8  IOSTANDARD LVCMOS18 } [get_ports {sw[9]}];
-set_property -dict { PACKAGE_PIN R16 IOSTANDARD LVCMOS33 } [get_ports {sw[10]}];
-set_property -dict { PACKAGE_PIN T13 IOSTANDARD LVCMOS33 } [get_ports {sw[11]}];
-set_property -dict { PACKAGE_PIN H6  IOSTANDARD LVCMOS33 } [get_ports {sw[12]}];
-set_property -dict { PACKAGE_PIN U12 IOSTANDARD LVCMOS33 } [get_ports {sw[13]}];
-set_property -dict { PACKAGE_PIN U11 IOSTANDARD LVCMOS33 } [get_ports {sw[14]}];
-set_property -dict { PACKAGE_PIN V10 IOSTANDARD LVCMOS33 } [get_ports {sw[15]}];
 
 # -----------------------------------------------
 # LEDs
@@ -85,44 +60,3 @@ set_property PACKAGE_PIN T14 [get_ports {an[5]}];
 set_property PACKAGE_PIN K2  [get_ports {an[6]}];
 set_property PACKAGE_PIN U13 [get_ports {an[7]}];
 set_property IOSTANDARD LVCMOS33 [get_ports {an[*]}]
-
-# -----------------------------------------------
-# RGB LEDs
-# -----------------------------------------------
-set_property -dict { PACKAGE_PIN N15 IOSTANDARD LVCMOS33 } [get_ports {led16_r}];
-set_property -dict { PACKAGE_PIN M16 IOSTANDARD LVCMOS33 } [get_ports {led16_g}];
-set_property -dict { PACKAGE_PIN R12 IOSTANDARD LVCMOS33 } [get_ports {led16_b}];
-
-set_property -dict { PACKAGE_PIN N16 IOSTANDARD LVCMOS33 } [get_ports {led17_r}];
-set_property -dict { PACKAGE_PIN R11 IOSTANDARD LVCMOS33 } [get_ports {led17_g}];
-set_property -dict { PACKAGE_PIN G14 IOSTANDARD LVCMOS33 } [get_ports {led17_b}];
-
-# -----------------------------------------------
-# USB-RS232 Interface
-# -----------------------------------------------
-set_property -dict { PACKAGE_PIN C4 IOSTANDARD LVCMOS33 } [get_ports {uart_txd_in}];
-set_property -dict { PACKAGE_PIN D4 IOSTANDARD LVCMOS33 } [get_ports {uart_rxd_out}];
-set_property -dict { PACKAGE_PIN D3 IOSTANDARD LVCMOS33 } [get_ports {uart_cts}];
-set_property -dict { PACKAGE_PIN E5 IOSTANDARD LVCMOS33 } [get_ports {uart_rts}];
-
-# -----------------------------------------------
-# Pmod Header JA
-# -----------------------------------------------
-set_property -dict { PACKAGE_PIN C17 IOSTANDARD LVCMOS33 } [get_ports {ja[1]}];
-set_property -dict { PACKAGE_PIN D18 IOSTANDARD LVCMOS33 } [get_ports {ja[2]}];
-set_property -dict { PACKAGE_PIN E18 IOSTANDARD LVCMOS33 } [get_ports {ja[3]}];
-set_property -dict { PACKAGE_PIN G17 IOSTANDARD LVCMOS33 } [get_ports {ja[4]}];
-set_property -dict { PACKAGE_PIN D17 IOSTANDARD LVCMOS33 } [get_ports {ja[7]}];
-set_property -dict { PACKAGE_PIN E17 IOSTANDARD LVCMOS33 } [get_ports {ja[8]}];
-set_property -dict { PACKAGE_PIN F18 IOSTANDARD LVCMOS33 } [get_ports {ja[9]}];
-set_property -dict { PACKAGE_PIN G18 IOSTANDARD LVCMOS33 } [get_ports {ja[10]}];
-
-# -----------------------------------------------
-# (Remaining peripherals preserved but omitted here for brevity)
-# JB, JC, JD, XADC, VGA, SD, Ethernet, Audio, etc.
-# Same conversion style applies:
-#
-# # set_property PACKAGE_PIN <PIN> [get_ports {<signal>}]
-# # set_property IOSTANDARD LVCMOS33 [get_ports {...}]
-#
-# -----------------------------------------------
