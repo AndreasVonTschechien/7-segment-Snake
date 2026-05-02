@@ -6,7 +6,7 @@
 
 ### Obsah
 * [Úvod](#uvod)
-* [Základní informace o projektu](#základní-informace-k-projektu-ℹ️)
+* [Základní informace o projektu](#základní-informace-k-projektu)
 * [Simulace komponentů](#simulace-komponent)
 * [Základní pohyb hada po displeji](#základní-pohyb-hada-po-displeji)
 * [Finalizace projektu](#Finalizace-projektu)
@@ -41,11 +41,11 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 
 <br>
 
-# Základní informace k projektu ℹ️
+# Základní informace k projektu
 
 <br>
 
-## Rozhraní signálů (Entity I/O) 🔌
+## Rozhraní signálů (Vstupní / Výstupní / Vnitřní)
 ### Vstupní signály
 | Signál | Směr | Šířka | Popis |
 | :--- | :---: | :---: | :--- |
@@ -62,7 +62,7 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 | **`SEG(7:0)`** | Out | 8 bitů | Ovládání jednotlivých segmentů (A-G + DP) pro 7-segmentový displej. |
 | **`AN(7:0)`** | Out | 8 bitů | Společné anody pro výběr aktivní cifry (Multiplexing). |
 
-### Interní propojení
+### Vnitřní propojení
 * **`SIG_CE`**: Pomalý synchronizační puls z `CLK_EN`, který řídí taktování logiky a displeje.
 * **`SIG_BTN_X_PRESS`**: Vyčištěné pulsy z `DEBOUNCERu` o délce jednoho taktu `CLK`.
 * **`SIG_VID_OUT(63:0)`**: 64-bitová sběrnice nesoucí data o stavu "pixelů" (segmentů) pro zobrazení.
@@ -70,7 +70,6 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 <br>
 <br>
 
-# Finalizace projektu
 ### RTL schéma
 * **[📄 Odkaz na kompletní RTL schéma v PDF](./Schémata/my_snake_schematic.pdf)**
 
