@@ -42,38 +42,6 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 <br>
 
 # Základní informace k projektu ℹ️
-### Blokové schéma projektu
-<img width="1200" height="600" alt="image" src="https://github.com/AndreasVonTschechien/7-segment-Snake/blob/main/Schémata/7-SEGMENT%20SNAKE.jpg?raw=true" />
-
-
-### 1. CLK_EN (Clock Enable)
-- Účel:   Dělič frekvence systémových hodin (Frequency Divider).
-- Funkce: Transformuje vysokofrekvenční CLK na nízkofrekvenční puls 'CE'.
-- Význam: Zpomaluje hru na hratelnou rychlost a synchronizuje timing všech bloků.
-
-------------------------
-
-### 2. DEBOUNCER 
-- Účel:   Ošetření mechanických vstupů z tlačítek.
-- Funkce: Odstraňuje elektrické zákmity (glitche) vznikající při stisku.
-- Výstup: Generuje čisté "One-Shot" pulsy (šířka 1 CLK) pro ovládání směru.
-
-------------------------
-
-### 3. SNAKE LOGIC (Game Engine)
-- Účel:   Hlavní herní procesor a stavový automat.
-- Funkce: 
-    * Výpočet souřadnic hlavy a segmentů těla.
-    * Detekce kolizí (stěny, vlastní ocas) a konzumace potravy.
-    * Správa herního stavu (Game Over, Score counting).
-- Data:   Vystupuje skóre (LED_SCORE) a video data (SEG_VID_OUT).
-
-------------------------
-
-### 4. DISPLAY CONTROL (I/O Driver)
-- Účel:   Ovladač rozhraní 7-segmentového displeje.
-- Funkce: Provádí časový multiplex pro 8 cifer (přepínání anod).
-- Převod: Dekóduje binární data z logiky na signály pro segmenty (katody).
 
 <br>
 
@@ -101,53 +69,6 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 
 <br>
 <br>
-
-# Simulace komponent
-* **Generátor Clock Enable (`ce`)**
-    * Systémové hodiny (clk) tikají na vysoké frekvenci, což je pro mechaniku hada příliš rychlé.
-    * Místo vytváření nových hodinových domén běží vše na jedné frekvenci, ale modul `ce` generuje v pravidelných intervalech krátký „povolující“ pulz, který dovolí hadovi udělat krok jen jednou za určitý čas, čímž zajišťuje konstantní a hratelnou rychlost.
-<img width="1200" height="250" alt="image" src="https://github.com/AndreasVonTschechien/7-segment-Snake/blob/main/TestBenches/clock_sim.png?raw=true" />
-
-* **[📄 Odkaz na TestBench komponenty CLOCK ENABLE](./tb_and_sim/clk_en_tb.vhd)**
-
-<br>
-
-* **Debouncer a zpracování tlačítek**
-    * Tlačítka jsou mechanická a při stisku generují krátké zákmity (digitální šum). Čip by tyto milisekundy trvající vibrace interpretoval jako desítky rychlých stisků za sebou. Debouncer tyto zákmity filtruje. Počká na ustálení signálu a do systému propustí pouze jeden čistý logický pulz. Díky tomu hra reaguje na každé zmáčknutí přesně jednou a had se neotočí o 180 stupňů omylem.
-    * Po ustálení signálu generuje `sig_press_...` krátký pulz pro jednorázové vyhodnocení stisku.
-    * Signály `sig_direction` mění stav okamžitě po detekci stisku a drží hodnotu až do dalšího platného povelu.
-<img width="1200" height="500" alt="image" src="https://github.com/AndreasVonTschechien/7-segment-Snake/blob/main/TestBenches/direction_sim.png?raw=true" />
-
-* **[📄 Odkaz na TestBench komponenty DEBOUNCE (neupravená verze)](./tb_and_sim/debounce_tb.vhd)**
-
-<br>
-
-* **Simulace ovládání hada**
-   * Na začátku časové osy je aktivován signál `s_btnc` (Reset). Dojde k nastavení výchozí pozice hada na střed displeje (s_x = 3, s_y = 2), což odpovídá čtvrté cifře zprava a prostřednímu    segmentu G. Směr pohybu je zahájen doprava `s_dir = 4`.
-   * V průběhu simulace je patrné, jak se s každým přetečením vnitřního čítače mění hodnota souřadnice `s_x` (3 → 2 → 1). Tomu odpovídá i změna aktivní anody `s_an[7:0]` (hodnoty fb a fd), což potvrzuje, že se had korektně přesouvá mezi jednotlivými ciframi displeje.
-   * Kolem času 250 ns dochází ke stisku tlačítka `s_btnu` (Nahoru). Simulace ověřuje funkci modulu `debounce.vhd` – signál směru `s_dir` se nezmění okamžitě, ale až po uplynutí filtrační doby definované čítačem debounceru. Poté směr plynule přechází na hodnotu `1`.
-   * Po změně směru lze sledovat logiku „pěti pater“. Hodnota signálu segmentů `s_seg` se mění z počátečního `3f` (segment G) na `5f` (svislý segment F – schod) a nakonec na `7e` (horní vodorovný segment A). To dokazuje, že had plně využívá celou plochu sedmisegmentové cifry.
-<img width="1482" height="460" alt="image" src="https://github.com/user-attachments/assets/2d1922b6-5d36-4442-9257-5b13d91029ca" />
-
-<br>
-<br>
-
-# Základní pohyb hada po displeji
-### RTL schéma
-* Toto RTL schéma je základní kostra projektu. Tento program zastřešuje základní pohyb hada po zvolené hrací ploše 3x16.
-<img width="1482" height="560" alt="image" src="https://github.com/AndreasVonTschechien/7-segment-Snake/blob/main/Schémata/block_diagram_of_VHDL_design.png?raw=true" />
-
-### Popis jednotlivých bloků
-| Blok / Modul | Funkce| Význam v systému |
-| :--- | :--- | :--- |
-| **`debounce`** | Ošetření vstupů | Filtruje mechanické zákmity tlačítek a generuje čisté synchronní pulzy pro změnu směru. Nebýt tohoto modulu, had by se stal neovladatelným. |
-| **`control_logic`** | Správa směru | Přijímá povely z debouncerů a udržuje stav aktuálního směru. Zabraňuje neplatným pohybům (např. otočení o 180° přímo do sebe). |
-| **`clk_en` & `counter`** | Časování & Multiplex | Generují povolovací signály (`ce`) pro rychlost hry a zajišťují přepínání anod pro multiplexní řízení displeje. |
-| **`movement_logic`** | Herní engine: | Hlavní mozek hry. Na základě herního taktu a směru vypočítává pozici hada, detekuje kolize a generuje data pro obraz. |
-
-<br> 
-
-<br> 
 
 # Finalizace projektu
 ### RTL schéma
