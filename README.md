@@ -166,6 +166,33 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 
 <br> 
 
+<br>
+
+## Rozhraní signálů (Vstupní / Výstupní / Vnitřní)
+### Vstupní signály
+| Signál | Směr | Šířka | Popis |
+| :--- | :---: | :---: | :--- |
+| **`CLK`** | In | 1 bit | Hlavní systémový hodinový signál. |
+| **`BTNC`** | In | 1 bit | Vstupní signál z tlačítka, který uvádí hru do výchozího stavu. |
+| **`BTNU`** | In | 1 bit | Vstupní signál z tlačítka pro pohyb hada nahoru. |
+| **`BTND`** | In | 1 bit | Vstupní signál z tlačítka pro pohyb hada dolů. |
+| **`BTNL`** | In | 1 bit | Vstupní signál z tlačítka pro pohyb hada doleva. |
+| **`BTNR`**| In | 1 bit | Vstupní signál z tlačítka pro pohyb hada doprava. |
+
+### Výstupní signály
+| Signál | Směr | Šířka | Popis |
+| :--- | :---: | :---: | :--- |
+| **`SEG(6:0)`** | Out | 7 bitů |Výstupní signál pro spínání jednotlivých segmentů (A-G) na 7-segmentovém displeji. |
+| **`AN(7:0)`** | Out | 8 bitů | Výstupní signál pro spínání příslušné anody pro výběr aktivní cifry. |
+| **`LED(15:0)`** | Out | 16 bitů |  Výstupní signál pro spínání příslušné LED diody. |
+
+### Vnitřní propojení
+* **`SIG_CE`**: Pomalý synchronizační puls z `CLK_EN`, který řídí taktování logiky a displeje.
+* **`SIG_BTN_X_PRESS`**: Vyčištěné pulsy z `DEBOUNCERu` o délce jednoho taktu `CLK`.
+* **`SIG_VID_OUT(63:0)`**: 64-bitová sběrnice nesoucí data o stavu "pixelů" (segmentů) pro zobrazení.
+
+<br>
+
 ### TestBench komponenty COUNTER
    * Hlavní náplní tohoto bloku je lineární čítání pulzů, které deklaruje výstupní port `cnt`. Na simulačním průběhu můžeme jasně vidět stabilitu návrhu: modul korektně reaguje na synchronní reset, který má prioritu před všemi ostatními operacemi.  Klíčovou funkcí je zde deklarovaný vstup `en` (enable).
    * Simulace prokazuje, že čítač inkrementuje svou hodnotu pouze v případě, že je tento signál aktivní. V opačném případě modul uchovává svůj stav, což je nezbytné pro správnou funkci časování v nadřazeném systému hry Snake. Ověřili jsme také chování při přetečení, kdy modul po dosažení binární hodnoty `111` (dekadicky 7) plynule přechází zpět na hodnotu `000`, čímž deklaruje správnou funkci modulo aritmetiky v rámci definovaného rozsahu `G_BITS`.
