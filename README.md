@@ -60,9 +60,9 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 ### Výstupní signály
 | Signál | Směr | Šířka | Popis |
 | :--- | :---: | :---: | :--- |
-| **`SEG(6:0)`** | Out | 7 bitů | Ovládání jednotlivých segmentů (A-G) pro 7-segmentový displej. |
-| **`AN(7:0)`** | Out | 8 bitů | Společné anody pro výběr aktivní cifry (Multiplexing). |
-| **`LED(15:0)`** | Out | 16 bitů | . |
+| **`SEG(6:0)`** | Out | 7 bitů |Výstupní signál pro spínání jednotlivých segmentů (A-G) na 7-segmentovém displeji. |
+| **`AN(7:0)`** | Out | 8 bitů | Výstupní signál pro spínání příslušné anody pro výběr aktivní cifry. |
+| **`LED(15:0)`** | Out | 16 bitů |  Výstupní signál pro spínání příslušné LED diody. |
 
 ### Vnitřní propojení
 * **`SIG_CE`**: Pomalý synchronizační puls z `CLK_EN`, který řídí taktování logiky a displeje.
