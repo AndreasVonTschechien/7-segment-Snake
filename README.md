@@ -43,6 +43,7 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 
 # Základní informace k projektu
 
+## Blokové schéma
 <br>
 
 ## Rozhraní signálů (Vstupní / Výstupní / Vnitřní)
@@ -70,7 +71,7 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 <br>
 <br>
 
-### RTL schéma
+## RTL schéma
 * **[📄 Odkaz na kompletní RTL schéma v PDF](./Schémata/my_snake_schematic.pdf)**
 
 ### Popis jednotlivých bloků
