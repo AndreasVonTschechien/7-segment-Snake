@@ -223,9 +223,9 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 <br>
 
 ### TestBench komponenty SNAKE DISPLAY
-* Hlavní náplní této simulace je ověření správnosti multiplexního řízení a segmentového dekodéru. Signál `sig_an` je modul, který deklaruje korektní postupné spínání anod v závislosti na čítači `mux_cnt`. Hodnoty `fe` až `7f` potvrzují, že je v každý okamžik aktivní právě jeden displej v režimu společné anody.
-* Signál `sig_seg` je modul, který úspěšně transformuje souřadnice bloku rekordů snake a food na budicí signály segmentů. Hodnota `7e` při nulté anodě prokazuje správné vykreslení hlavy hada na horním segmentu `(A)`. Hodnota `77` při sedmé anodě prokazuje korektní zobrazení potravy na spodním segmentu `(D)`.
-<img src="https://github.com/AndreasVonTschechien/7-segment-Snake/blob/main/TestBenches/tb_snake_display.png?raw=true" />
+* Hlavní náplní této simulace je ověření správnosti multiplexního řízení a segmentového dekodéru. Signál `sig_an` prokazuje korektní postupné spínání anod v závislosti na čítači `sig_mux_cnt`. Postupná změna binární hodnoty od `11111110` až po `01111111` potvrzuje, že systém pracuje v režimu společné anody, kdy je v každý časový okamžik aktivní právě jeden displej. Signál `sig_seg` potvrzuje úspěšné vykreslení hlavy hada na úrovni nulté anody (hodnota `1111110`), což odpovídá aktivaci horního segmentu `A`. Vykreslení jídla probíhá na úrovni sedmé anody (hodnota `1110111`), což prokazuje správnou aktivaci spodního segmentu `D`. Mezi těmito stavy nejsou vykresleny žádné další stavy (hodnota `1111111`).
+
+<img src="https://github.com/AndreasVonTschechien/7-segment-Snake/blob/main/TestBenches/tb_snake_display_v2.png?raw=true" />
 
 * **[📄 Odkaz na TestBench komponenty SNAKE DISPLAY](./SNAKE_FINAL.srcs/sim_1/new/tb_snake_display.vhd)**
 
