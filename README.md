@@ -182,15 +182,16 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 ### Výstupní signály
 | Signál | Směr | Šířka | Popis |
 | :--- | :---: | :---: | :--- |
-| **`snake_out(31 downto 0)`** | Out | 32 bitů |Výstupní signál z GAME_CTRL nesoucí x a y pozice hada. |
-| **`snake_in(31 downto 0)`** | Out | 32 bitů |Vstupní signál do DISP_DRV nesoucí x a y pozice hada. |
+| **`SEG(6:0)`** | Out | 7 bitů |Výstupní signál pro spínání jednotlivých segmentů (A-G) na 7-segmentovém displeji. |
+| **`AN(7:0)`** | Out | 8 bitů | Výstupní signál pro spínání příslušné anody pro výběr aktivní cifry. |
+| **`LED(15:0)`** | Out | 16 bitů |  Výstupní signál pro spínání příslušné LED diody. |
 
 
 ### Vnitřní signály
-| **`snake_out(31 downto 0)`** | Out | 32 bitů |Výstupní signál z GAME_CTRL nesoucí x a y pozice hada. |
-| **`snake_in(31 downto 0)`** | Out | 32 bitů |Vstupní signál do DISP_DRV nesoucí x a y pozice hada. |
-| **`food_out(3 downto 0)`** | Out | 4 bitů |Výstupní signál z GAME_CTRL nesoucí x a y pozice jídla. |
-| **`food_in(3 downto 0)`** | Out | 4 bitů |Vstupní signál do DISP_DRV nesoucí x a y pozice jídla. |
+**`snake_out(31 downto 0)`** Výstupní signál z GAME_CTRL nesoucí x a y pozice hada. 
+**`snake_in(31 downto 0)`** Vstupní signál do DISP_DRV nesoucí x a y pozice hada. 
+**`food_out(3 downto 0)`** Výstupní signál z GAME_CTRL nesoucí x a y pozice jídla. 
+**`food_in(3 downto 0)`** Vstupní signál do DISP_DRV nesoucí x a y pozice jídla. 
 
 
 <br>
