@@ -186,12 +186,13 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 | **`AN(7:0)`** | Out | 8 bitů | Výstupní signál pro spínání příslušné anody pro výběr aktivní cifry. |
 | **`LED(15:0)`** | Out | 16 bitů |  Výstupní signál pro spínání příslušné LED diody. |
 
-<br>
 ### Vnitřní signály
-**`snake_out(31 downto 0)`** Výstupní signál z GAME_CTRL nesoucí x a y pozice hada. 
-**`snake_in(31 downto 0)`** Vstupní signál do DISP_DRV nesoucí x a y pozice hada. 
-**`food_out(3 downto 0)`** Výstupní signál z GAME_CTRL nesoucí x a y pozice jídla. 
-**`food_in(3 downto 0)`** Vstupní signál do DISP_DRV nesoucí x a y pozice jídla. 
+*`snake_out(31 downto 0)` Výstupní signál z GAME_CTRL nesoucí x a y pozice hada. 
+*`snake_in(31 downto 0)` Vstupní signál do DISP_DRV nesoucí x a y pozice hada. 
+*`food_out(3 downto 0)` Výstupní signál z GAME_CTRL nesoucí x a y pozice jídla. 
+*`food_in(3 downto 0)` Vstupní signál do DISP_DRV nesoucí x a y pozice jídla. 
+
+<br>
 
 ### TestBench komponenty COUNTER
    * Hlavní náplní tohoto bloku je lineární čítání pulzů, které deklaruje výstupní port `cnt`. Na simulačním průběhu můžeme jasně vidět stabilitu návrhu: modul korektně reaguje na synchronní reset, který má prioritu před všemi ostatními operacemi.  Klíčovou funkcí je zde deklarovaný vstup `en` (enable).
