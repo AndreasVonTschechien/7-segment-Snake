@@ -168,7 +168,7 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 
 <br>
 
-## Rozhraní signálů (Vstupní / Výstupní / Vnitřní)
+## Signály (Vstupní / Výstupní / Vnitřní)
 ### Vstupní signály
 | Signál | Směr | Šířka | Popis |
 | :--- | :---: | :---: | :--- |
@@ -182,14 +182,14 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 ### Výstupní signály
 | Signál | Směr | Šířka | Popis |
 | :--- | :---: | :---: | :--- |
-| **`SEG(6:0)`** | Out | 7 bitů |Výstupní signál pro spínání jednotlivých segmentů (A-G) na 7-segmentovém displeji. |
-| **`AN(7:0)`** | Out | 8 bitů | Výstupní signál pro spínání příslušné anody pro výběr aktivní cifry. |
-| **`LED(15:0)`** | Out | 16 bitů |  Výstupní signál pro spínání příslušné LED diody. |
+| **`snake_out(31 downto 0)`** | Out | 32 bitů |Výstupní signál z GAME_CTRL nesoucí x a y pozice hada. |
+| **`snake_in(31 downto 0)`** | Out | 32 bitů |Vstupní signál do DISP_DRV nesoucí x a y pozice hada. |
+| **`food_out(3 downto 0)`** | Out | 4 bitů |Výstupní signál z GAME_CTRL nesoucí x a y pozice jídla. |
+| **`food_in(3 downto 0)`** | Out | 4 bitů |Vstupní signál do DISP_DRV nesoucí x a y pozice jídla. |
 
 ### Vnitřní signály
 * **`SIG_CE`**: Pomalý synchronizační puls z `CLK_EN`, který řídí taktování logiky a displeje.
-* **`SIG_BTN_X_PRESS`**: Vyčištěné pulsy z `DEBOUNCERu` o délce jednoho taktu `CLK`.
-* **`SIG_VID_OUT(63:0)`**: 64-bitová sběrnice nesoucí data o stavu "pixelů" (segmentů) pro zobrazení.
+
 
 <br>
 
