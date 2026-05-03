@@ -187,10 +187,10 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 | **`LED(15:0)`** | Out | 16 bitů |  Výstupní signál pro spínání příslušné LED diody. |
 
 ### Vnitřní signály
-*`snake_out(31 downto 0)` Výstupní signál z GAME_CTRL nesoucí x a y pozice hada. 
-*`snake_in(31 downto 0)` Vstupní signál do DISP_DRV nesoucí x a y pozice hada. 
-*`food_out(3 downto 0)` Výstupní signál z GAME_CTRL nesoucí x a y pozice jídla. 
-*`food_in(3 downto 0)` Vstupní signál do DISP_DRV nesoucí x a y pozice jídla. 
+* **`snake_out(31 downto 0)`**: Výstupní signál z GAME_CTRL nesoucí x a y pozice hada. 
+* **`snake_in(31 downto 0)`**: Vstupní signál do DISP_DRV nesoucí x a y pozice hada. 
+* **`food_out(3 downto 0)`**: Výstupní signál z GAME_CTRL nesoucí x a y pozice jídla. 
+* **`food_in(3 downto 0)`**: Vstupní signál do DISP_DRV nesoucí x a y pozice jídla. 
 
 <br>
 
