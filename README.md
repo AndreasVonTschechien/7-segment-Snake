@@ -184,11 +184,13 @@ Výsledný projekt bude následně předveden na desce Nexys A7-50T, doplněn kr
 | :--- | :---: | :---: | :--- |
 | **`snake_out(31 downto 0)`** | Out | 32 bitů |Výstupní signál z GAME_CTRL nesoucí x a y pozice hada. |
 | **`snake_in(31 downto 0)`** | Out | 32 bitů |Vstupní signál do DISP_DRV nesoucí x a y pozice hada. |
-| **`food_out(3 downto 0)`** | Out | 4 bitů |Výstupní signál z GAME_CTRL nesoucí x a y pozice jídla. |
-| **`food_in(3 downto 0)`** | Out | 4 bitů |Vstupní signál do DISP_DRV nesoucí x a y pozice jídla. |
+
 
 ### Vnitřní signály
-* **`SIG_CE`**: Pomalý synchronizační puls z `CLK_EN`, který řídí taktování logiky a displeje.
+| **`snake_out(31 downto 0)`** | Out | 32 bitů |Výstupní signál z GAME_CTRL nesoucí x a y pozice hada. |
+| **`snake_in(31 downto 0)`** | Out | 32 bitů |Vstupní signál do DISP_DRV nesoucí x a y pozice hada. |
+| **`food_out(3 downto 0)`** | Out | 4 bitů |Výstupní signál z GAME_CTRL nesoucí x a y pozice jídla. |
+| **`food_in(3 downto 0)`** | Out | 4 bitů |Vstupní signál do DISP_DRV nesoucí x a y pozice jídla. |
 
 
 <br>
